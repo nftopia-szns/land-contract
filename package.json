@@ -1,0 +1,17 @@
+{
+  "name": "land-contract",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "gen-type": "typechain --target ethers-v5 --out-dir typechain '**/*.abi'"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typechain": "^8.0.0"
+  },
+  "dependencies": {
+    "@typechain/ethers-v5": "^10.0.0",
+    "@typechain/truffle-v5": "^8.0.0"
+  }
+}
