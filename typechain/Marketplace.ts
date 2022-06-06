@@ -4,11 +4,11 @@
 import type {
   BaseContract,
   BigNumber,
+  BigNumberish,
   BytesLike,
   CallOverrides,
   ContractTransaction,
   Overrides,
-  PayableOverrides,
   PopulatedTransaction,
   Signer,
   utils,
@@ -28,75 +28,435 @@ import type {
 
 export interface MarketplaceInterface extends utils.Interface {
   functions: {
-    "upgradeTo(address)": FunctionFragment;
-    "upgradeToAndCall(address,bytes)": FunctionFragment;
-    "implementation()": FunctionFragment;
-    "changeAdmin(address)": FunctionFragment;
-    "admin()": FunctionFragment;
+    "setOwnerCutPerMillion(uint256)": FunctionFragment;
+    "setLegacyNFTAddress(address)": FunctionFragment;
+    "ERC721_Interface()": FunctionFragment;
+    "InterfaceId_ValidateFingerprint()": FunctionFragment;
+    "unpause()": FunctionFragment;
+    "acceptedToken()": FunctionFragment;
+    "cancelOrder(uint256)": FunctionFragment;
+    "cancelOrder(address,uint256)": FunctionFragment;
+    "paused()": FunctionFragment;
+    "createOrder(address,uint256,uint256,uint256)": FunctionFragment;
+    "createOrder(uint256,uint256,uint256)": FunctionFragment;
+    "initialize()": FunctionFragment;
+    "initialize(address,address,address)": FunctionFragment;
+    "initialize(address)": FunctionFragment;
+    "pause()": FunctionFragment;
+    "owner()": FunctionFragment;
+    "safeExecuteOrder(address,uint256,uint256,bytes)": FunctionFragment;
+    "ownerCutPerMillion()": FunctionFragment;
+    "publicationFeeInWei()": FunctionFragment;
+    "executeOrder(address,uint256,uint256)": FunctionFragment;
+    "executeOrder(uint256,uint256)": FunctionFragment;
+    "setPublicationFee(uint256)": FunctionFragment;
+    "isMigrated(string,string)": FunctionFragment;
+    "legacyNFTAddress()": FunctionFragment;
+    "auctionByAssetId(uint256)": FunctionFragment;
+    "orderByAssetId(address,uint256)": FunctionFragment;
+    "transferOwnership(address)": FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
-      | "upgradeTo"
-      | "upgradeToAndCall"
-      | "implementation"
-      | "changeAdmin"
-      | "admin"
+      | "setOwnerCutPerMillion"
+      | "setLegacyNFTAddress"
+      | "ERC721_Interface"
+      | "InterfaceId_ValidateFingerprint"
+      | "unpause"
+      | "acceptedToken"
+      | "cancelOrder(uint256)"
+      | "cancelOrder(address,uint256)"
+      | "paused"
+      | "createOrder(address,uint256,uint256,uint256)"
+      | "createOrder(uint256,uint256,uint256)"
+      | "initialize()"
+      | "initialize(address,address,address)"
+      | "initialize(address)"
+      | "pause"
+      | "owner"
+      | "safeExecuteOrder"
+      | "ownerCutPerMillion"
+      | "publicationFeeInWei"
+      | "executeOrder(address,uint256,uint256)"
+      | "executeOrder(uint256,uint256)"
+      | "setPublicationFee"
+      | "isMigrated"
+      | "legacyNFTAddress"
+      | "auctionByAssetId"
+      | "orderByAssetId"
+      | "transferOwnership"
   ): FunctionFragment;
 
-  encodeFunctionData(functionFragment: "upgradeTo", values: [string]): string;
   encodeFunctionData(
-    functionFragment: "upgradeToAndCall",
-    values: [string, BytesLike]
+    functionFragment: "setOwnerCutPerMillion",
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "implementation",
+    functionFragment: "setLegacyNFTAddress",
+    values: [string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "ERC721_Interface",
     values?: undefined
   ): string;
-  encodeFunctionData(functionFragment: "changeAdmin", values: [string]): string;
-  encodeFunctionData(functionFragment: "admin", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "InterfaceId_ValidateFingerprint",
+    values?: undefined
+  ): string;
+  encodeFunctionData(functionFragment: "unpause", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "acceptedToken",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "cancelOrder(uint256)",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "cancelOrder(address,uint256)",
+    values: [string, BigNumberish]
+  ): string;
+  encodeFunctionData(functionFragment: "paused", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "createOrder(address,uint256,uint256,uint256)",
+    values: [string, BigNumberish, BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "createOrder(uint256,uint256,uint256)",
+    values: [BigNumberish, BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "initialize()",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "initialize(address,address,address)",
+    values: [string, string, string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "initialize(address)",
+    values: [string]
+  ): string;
+  encodeFunctionData(functionFragment: "pause", values?: undefined): string;
+  encodeFunctionData(functionFragment: "owner", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "safeExecuteOrder",
+    values: [string, BigNumberish, BigNumberish, BytesLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "ownerCutPerMillion",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "publicationFeeInWei",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "executeOrder(address,uint256,uint256)",
+    values: [string, BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "executeOrder(uint256,uint256)",
+    values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setPublicationFee",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "isMigrated",
+    values: [string, string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "legacyNFTAddress",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "auctionByAssetId",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "orderByAssetId",
+    values: [string, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "transferOwnership",
+    values: [string]
+  ): string;
 
-  decodeFunctionResult(functionFragment: "upgradeTo", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "upgradeToAndCall",
+    functionFragment: "setOwnerCutPerMillion",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "implementation",
+    functionFragment: "setLegacyNFTAddress",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "changeAdmin",
+    functionFragment: "ERC721_Interface",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "admin", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "InterfaceId_ValidateFingerprint",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "unpause", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "acceptedToken",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "cancelOrder(uint256)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "cancelOrder(address,uint256)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "paused", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "createOrder(address,uint256,uint256,uint256)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "createOrder(uint256,uint256,uint256)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "initialize()",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "initialize(address,address,address)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "initialize(address)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "pause", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "safeExecuteOrder",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "ownerCutPerMillion",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "publicationFeeInWei",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "executeOrder(address,uint256,uint256)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "executeOrder(uint256,uint256)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setPublicationFee",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "isMigrated", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "legacyNFTAddress",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "auctionByAssetId",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "orderByAssetId",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "transferOwnership",
+    data: BytesLike
+  ): Result;
 
   events: {
-    "AdminChanged(address,address)": EventFragment;
-    "Upgraded(address)": EventFragment;
+    "OrderCreated(bytes32,uint256,address,address,uint256,uint256)": EventFragment;
+    "OrderSuccessful(bytes32,uint256,address,address,uint256,address)": EventFragment;
+    "OrderCancelled(bytes32,uint256,address,address)": EventFragment;
+    "ChangedPublicationFee(uint256)": EventFragment;
+    "ChangedOwnerCutPerMillion(uint256)": EventFragment;
+    "ChangeLegacyNFTAddress(address)": EventFragment;
+    "AuctionCreated(bytes32,uint256,address,uint256,uint256)": EventFragment;
+    "AuctionSuccessful(bytes32,uint256,address,uint256,address)": EventFragment;
+    "AuctionCancelled(bytes32,uint256,address)": EventFragment;
+    "Pause()": EventFragment;
+    "Unpause()": EventFragment;
+    "OwnershipTransferred(address,address)": EventFragment;
+    "Migrated(string,string)": EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "AdminChanged"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Upgraded"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "OrderCreated"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "OrderSuccessful"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "OrderCancelled"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "ChangedPublicationFee"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "ChangedOwnerCutPerMillion"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "ChangeLegacyNFTAddress"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "AuctionCreated"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "AuctionSuccessful"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "AuctionCancelled"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Pause"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Unpause"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Migrated"): EventFragment;
 }
 
-export interface AdminChangedEventObject {
-  previousAdmin: string;
-  newAdmin: string;
+export interface OrderCreatedEventObject {
+  id: string;
+  assetId: BigNumber;
+  seller: string;
+  nftAddress: string;
+  priceInWei: BigNumber;
+  expiresAt: BigNumber;
 }
-export type AdminChangedEvent = TypedEvent<
-  [string, string],
-  AdminChangedEventObject
+export type OrderCreatedEvent = TypedEvent<
+  [string, BigNumber, string, string, BigNumber, BigNumber],
+  OrderCreatedEventObject
 >;
 
-export type AdminChangedEventFilter = TypedEventFilter<AdminChangedEvent>;
+export type OrderCreatedEventFilter = TypedEventFilter<OrderCreatedEvent>;
 
-export interface UpgradedEventObject {
-  implementation: string;
+export interface OrderSuccessfulEventObject {
+  id: string;
+  assetId: BigNumber;
+  seller: string;
+  nftAddress: string;
+  totalPrice: BigNumber;
+  buyer: string;
 }
-export type UpgradedEvent = TypedEvent<[string], UpgradedEventObject>;
+export type OrderSuccessfulEvent = TypedEvent<
+  [string, BigNumber, string, string, BigNumber, string],
+  OrderSuccessfulEventObject
+>;
 
-export type UpgradedEventFilter = TypedEventFilter<UpgradedEvent>;
+export type OrderSuccessfulEventFilter = TypedEventFilter<OrderSuccessfulEvent>;
+
+export interface OrderCancelledEventObject {
+  id: string;
+  assetId: BigNumber;
+  seller: string;
+  nftAddress: string;
+}
+export type OrderCancelledEvent = TypedEvent<
+  [string, BigNumber, string, string],
+  OrderCancelledEventObject
+>;
+
+export type OrderCancelledEventFilter = TypedEventFilter<OrderCancelledEvent>;
+
+export interface ChangedPublicationFeeEventObject {
+  publicationFee: BigNumber;
+}
+export type ChangedPublicationFeeEvent = TypedEvent<
+  [BigNumber],
+  ChangedPublicationFeeEventObject
+>;
+
+export type ChangedPublicationFeeEventFilter =
+  TypedEventFilter<ChangedPublicationFeeEvent>;
+
+export interface ChangedOwnerCutPerMillionEventObject {
+  ownerCutPerMillion: BigNumber;
+}
+export type ChangedOwnerCutPerMillionEvent = TypedEvent<
+  [BigNumber],
+  ChangedOwnerCutPerMillionEventObject
+>;
+
+export type ChangedOwnerCutPerMillionEventFilter =
+  TypedEventFilter<ChangedOwnerCutPerMillionEvent>;
+
+export interface ChangeLegacyNFTAddressEventObject {
+  legacyNFTAddress: string;
+}
+export type ChangeLegacyNFTAddressEvent = TypedEvent<
+  [string],
+  ChangeLegacyNFTAddressEventObject
+>;
+
+export type ChangeLegacyNFTAddressEventFilter =
+  TypedEventFilter<ChangeLegacyNFTAddressEvent>;
+
+export interface AuctionCreatedEventObject {
+  id: string;
+  assetId: BigNumber;
+  seller: string;
+  priceInWei: BigNumber;
+  expiresAt: BigNumber;
+}
+export type AuctionCreatedEvent = TypedEvent<
+  [string, BigNumber, string, BigNumber, BigNumber],
+  AuctionCreatedEventObject
+>;
+
+export type AuctionCreatedEventFilter = TypedEventFilter<AuctionCreatedEvent>;
+
+export interface AuctionSuccessfulEventObject {
+  id: string;
+  assetId: BigNumber;
+  seller: string;
+  totalPrice: BigNumber;
+  winner: string;
+}
+export type AuctionSuccessfulEvent = TypedEvent<
+  [string, BigNumber, string, BigNumber, string],
+  AuctionSuccessfulEventObject
+>;
+
+export type AuctionSuccessfulEventFilter =
+  TypedEventFilter<AuctionSuccessfulEvent>;
+
+export interface AuctionCancelledEventObject {
+  id: string;
+  assetId: BigNumber;
+  seller: string;
+}
+export type AuctionCancelledEvent = TypedEvent<
+  [string, BigNumber, string],
+  AuctionCancelledEventObject
+>;
+
+export type AuctionCancelledEventFilter =
+  TypedEventFilter<AuctionCancelledEvent>;
+
+export interface PauseEventObject {}
+export type PauseEvent = TypedEvent<[], PauseEventObject>;
+
+export type PauseEventFilter = TypedEventFilter<PauseEvent>;
+
+export interface UnpauseEventObject {}
+export type UnpauseEvent = TypedEvent<[], UnpauseEventObject>;
+
+export type UnpauseEventFilter = TypedEventFilter<UnpauseEvent>;
+
+export interface OwnershipTransferredEventObject {
+  previousOwner: string;
+  newOwner: string;
+}
+export type OwnershipTransferredEvent = TypedEvent<
+  [string, string],
+  OwnershipTransferredEventObject
+>;
+
+export type OwnershipTransferredEventFilter =
+  TypedEventFilter<OwnershipTransferredEvent>;
+
+export interface MigratedEventObject {
+  contractName: string;
+  migrationId: string;
+}
+export type MigratedEvent = TypedEvent<[string, string], MigratedEventObject>;
+
+export type MigratedEventFilter = TypedEventFilter<MigratedEvent>;
 
 export interface Marketplace extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
@@ -125,121 +485,790 @@ export interface Marketplace extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
-    upgradeTo(
-      newImplementation: string,
+    setOwnerCutPerMillion(
+      _ownerCutPerMillion: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    upgradeToAndCall(
-      newImplementation: string,
-      data: BytesLike,
-      overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    implementation(overrides?: CallOverrides): Promise<[string]>;
-
-    changeAdmin(
-      newAdmin: string,
+    setLegacyNFTAddress(
+      _legacyNFTAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    admin(overrides?: CallOverrides): Promise<[string]>;
+    ERC721_Interface(overrides?: CallOverrides): Promise<[string]>;
+
+    InterfaceId_ValidateFingerprint(
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
+    unpause(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    acceptedToken(overrides?: CallOverrides): Promise<[string]>;
+
+    "cancelOrder(uint256)"(
+      assetId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    "cancelOrder(address,uint256)"(
+      nftAddress: string,
+      assetId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    paused(overrides?: CallOverrides): Promise<[boolean]>;
+
+    "createOrder(address,uint256,uint256,uint256)"(
+      nftAddress: string,
+      assetId: BigNumberish,
+      priceInWei: BigNumberish,
+      expiresAt: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    "createOrder(uint256,uint256,uint256)"(
+      assetId: BigNumberish,
+      priceInWei: BigNumberish,
+      expiresAt: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    "initialize()"(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    "initialize(address,address,address)"(
+      _acceptedToken: string,
+      _legacyNFTAddress: string,
+      _owner: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    "initialize(address)"(
+      _sender: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    pause(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    owner(overrides?: CallOverrides): Promise<[string]>;
+
+    safeExecuteOrder(
+      nftAddress: string,
+      assetId: BigNumberish,
+      price: BigNumberish,
+      fingerprint: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    ownerCutPerMillion(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    publicationFeeInWei(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    "executeOrder(address,uint256,uint256)"(
+      nftAddress: string,
+      assetId: BigNumberish,
+      price: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    "executeOrder(uint256,uint256)"(
+      assetId: BigNumberish,
+      price: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    setPublicationFee(
+      _publicationFee: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    isMigrated(
+      contractName: string,
+      migrationId: string,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
+    legacyNFTAddress(overrides?: CallOverrides): Promise<[string]>;
+
+    auctionByAssetId(
+      assetId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string, string, BigNumber, BigNumber]>;
+
+    orderByAssetId(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<
+      [string, string, string, BigNumber, BigNumber] & {
+        id: string;
+        seller: string;
+        nftAddress: string;
+        price: BigNumber;
+        expiresAt: BigNumber;
+      }
+    >;
+
+    transferOwnership(
+      newOwner: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
   };
 
-  upgradeTo(
-    newImplementation: string,
+  setOwnerCutPerMillion(
+    _ownerCutPerMillion: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  upgradeToAndCall(
-    newImplementation: string,
-    data: BytesLike,
-    overrides?: PayableOverrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  implementation(overrides?: CallOverrides): Promise<string>;
-
-  changeAdmin(
-    newAdmin: string,
+  setLegacyNFTAddress(
+    _legacyNFTAddress: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  admin(overrides?: CallOverrides): Promise<string>;
+  ERC721_Interface(overrides?: CallOverrides): Promise<string>;
+
+  InterfaceId_ValidateFingerprint(overrides?: CallOverrides): Promise<string>;
+
+  unpause(
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  acceptedToken(overrides?: CallOverrides): Promise<string>;
+
+  "cancelOrder(uint256)"(
+    assetId: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  "cancelOrder(address,uint256)"(
+    nftAddress: string,
+    assetId: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  paused(overrides?: CallOverrides): Promise<boolean>;
+
+  "createOrder(address,uint256,uint256,uint256)"(
+    nftAddress: string,
+    assetId: BigNumberish,
+    priceInWei: BigNumberish,
+    expiresAt: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  "createOrder(uint256,uint256,uint256)"(
+    assetId: BigNumberish,
+    priceInWei: BigNumberish,
+    expiresAt: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  "initialize()"(
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  "initialize(address,address,address)"(
+    _acceptedToken: string,
+    _legacyNFTAddress: string,
+    _owner: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  "initialize(address)"(
+    _sender: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  pause(
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  owner(overrides?: CallOverrides): Promise<string>;
+
+  safeExecuteOrder(
+    nftAddress: string,
+    assetId: BigNumberish,
+    price: BigNumberish,
+    fingerprint: BytesLike,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  ownerCutPerMillion(overrides?: CallOverrides): Promise<BigNumber>;
+
+  publicationFeeInWei(overrides?: CallOverrides): Promise<BigNumber>;
+
+  "executeOrder(address,uint256,uint256)"(
+    nftAddress: string,
+    assetId: BigNumberish,
+    price: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  "executeOrder(uint256,uint256)"(
+    assetId: BigNumberish,
+    price: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  setPublicationFee(
+    _publicationFee: BigNumberish,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  isMigrated(
+    contractName: string,
+    migrationId: string,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
+  legacyNFTAddress(overrides?: CallOverrides): Promise<string>;
+
+  auctionByAssetId(
+    assetId: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<[string, string, BigNumber, BigNumber]>;
+
+  orderByAssetId(
+    arg0: string,
+    arg1: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<
+    [string, string, string, BigNumber, BigNumber] & {
+      id: string;
+      seller: string;
+      nftAddress: string;
+      price: BigNumber;
+      expiresAt: BigNumber;
+    }
+  >;
+
+  transferOwnership(
+    newOwner: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
 
   callStatic: {
-    upgradeTo(
-      newImplementation: string,
+    setOwnerCutPerMillion(
+      _ownerCutPerMillion: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    upgradeToAndCall(
-      newImplementation: string,
-      data: BytesLike,
+    setLegacyNFTAddress(
+      _legacyNFTAddress: string,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    implementation(overrides?: CallOverrides): Promise<string>;
+    ERC721_Interface(overrides?: CallOverrides): Promise<string>;
 
-    changeAdmin(newAdmin: string, overrides?: CallOverrides): Promise<void>;
+    InterfaceId_ValidateFingerprint(overrides?: CallOverrides): Promise<string>;
 
-    admin(overrides?: CallOverrides): Promise<string>;
+    unpause(overrides?: CallOverrides): Promise<void>;
+
+    acceptedToken(overrides?: CallOverrides): Promise<string>;
+
+    "cancelOrder(uint256)"(
+      assetId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "cancelOrder(address,uint256)"(
+      nftAddress: string,
+      assetId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    paused(overrides?: CallOverrides): Promise<boolean>;
+
+    "createOrder(address,uint256,uint256,uint256)"(
+      nftAddress: string,
+      assetId: BigNumberish,
+      priceInWei: BigNumberish,
+      expiresAt: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "createOrder(uint256,uint256,uint256)"(
+      assetId: BigNumberish,
+      priceInWei: BigNumberish,
+      expiresAt: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "initialize()"(overrides?: CallOverrides): Promise<void>;
+
+    "initialize(address,address,address)"(
+      _acceptedToken: string,
+      _legacyNFTAddress: string,
+      _owner: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "initialize(address)"(
+      _sender: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    pause(overrides?: CallOverrides): Promise<void>;
+
+    owner(overrides?: CallOverrides): Promise<string>;
+
+    safeExecuteOrder(
+      nftAddress: string,
+      assetId: BigNumberish,
+      price: BigNumberish,
+      fingerprint: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    ownerCutPerMillion(overrides?: CallOverrides): Promise<BigNumber>;
+
+    publicationFeeInWei(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "executeOrder(address,uint256,uint256)"(
+      nftAddress: string,
+      assetId: BigNumberish,
+      price: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "executeOrder(uint256,uint256)"(
+      assetId: BigNumberish,
+      price: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setPublicationFee(
+      _publicationFee: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    isMigrated(
+      contractName: string,
+      migrationId: string,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
+    legacyNFTAddress(overrides?: CallOverrides): Promise<string>;
+
+    auctionByAssetId(
+      assetId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string, string, BigNumber, BigNumber]>;
+
+    orderByAssetId(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<
+      [string, string, string, BigNumber, BigNumber] & {
+        id: string;
+        seller: string;
+        nftAddress: string;
+        price: BigNumber;
+        expiresAt: BigNumber;
+      }
+    >;
+
+    transferOwnership(
+      newOwner: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
   };
 
   filters: {
-    "AdminChanged(address,address)"(
-      previousAdmin?: null,
-      newAdmin?: null
-    ): AdminChangedEventFilter;
-    AdminChanged(
-      previousAdmin?: null,
-      newAdmin?: null
-    ): AdminChangedEventFilter;
+    "OrderCreated(bytes32,uint256,address,address,uint256,uint256)"(
+      id?: null,
+      assetId?: BigNumberish | null,
+      seller?: string | null,
+      nftAddress?: null,
+      priceInWei?: null,
+      expiresAt?: null
+    ): OrderCreatedEventFilter;
+    OrderCreated(
+      id?: null,
+      assetId?: BigNumberish | null,
+      seller?: string | null,
+      nftAddress?: null,
+      priceInWei?: null,
+      expiresAt?: null
+    ): OrderCreatedEventFilter;
 
-    "Upgraded(address)"(implementation?: null): UpgradedEventFilter;
-    Upgraded(implementation?: null): UpgradedEventFilter;
+    "OrderSuccessful(bytes32,uint256,address,address,uint256,address)"(
+      id?: null,
+      assetId?: BigNumberish | null,
+      seller?: string | null,
+      nftAddress?: null,
+      totalPrice?: null,
+      buyer?: string | null
+    ): OrderSuccessfulEventFilter;
+    OrderSuccessful(
+      id?: null,
+      assetId?: BigNumberish | null,
+      seller?: string | null,
+      nftAddress?: null,
+      totalPrice?: null,
+      buyer?: string | null
+    ): OrderSuccessfulEventFilter;
+
+    "OrderCancelled(bytes32,uint256,address,address)"(
+      id?: null,
+      assetId?: BigNumberish | null,
+      seller?: string | null,
+      nftAddress?: null
+    ): OrderCancelledEventFilter;
+    OrderCancelled(
+      id?: null,
+      assetId?: BigNumberish | null,
+      seller?: string | null,
+      nftAddress?: null
+    ): OrderCancelledEventFilter;
+
+    "ChangedPublicationFee(uint256)"(
+      publicationFee?: null
+    ): ChangedPublicationFeeEventFilter;
+    ChangedPublicationFee(
+      publicationFee?: null
+    ): ChangedPublicationFeeEventFilter;
+
+    "ChangedOwnerCutPerMillion(uint256)"(
+      ownerCutPerMillion?: null
+    ): ChangedOwnerCutPerMillionEventFilter;
+    ChangedOwnerCutPerMillion(
+      ownerCutPerMillion?: null
+    ): ChangedOwnerCutPerMillionEventFilter;
+
+    "ChangeLegacyNFTAddress(address)"(
+      legacyNFTAddress?: string | null
+    ): ChangeLegacyNFTAddressEventFilter;
+    ChangeLegacyNFTAddress(
+      legacyNFTAddress?: string | null
+    ): ChangeLegacyNFTAddressEventFilter;
+
+    "AuctionCreated(bytes32,uint256,address,uint256,uint256)"(
+      id?: null,
+      assetId?: BigNumberish | null,
+      seller?: string | null,
+      priceInWei?: null,
+      expiresAt?: null
+    ): AuctionCreatedEventFilter;
+    AuctionCreated(
+      id?: null,
+      assetId?: BigNumberish | null,
+      seller?: string | null,
+      priceInWei?: null,
+      expiresAt?: null
+    ): AuctionCreatedEventFilter;
+
+    "AuctionSuccessful(bytes32,uint256,address,uint256,address)"(
+      id?: null,
+      assetId?: BigNumberish | null,
+      seller?: string | null,
+      totalPrice?: null,
+      winner?: string | null
+    ): AuctionSuccessfulEventFilter;
+    AuctionSuccessful(
+      id?: null,
+      assetId?: BigNumberish | null,
+      seller?: string | null,
+      totalPrice?: null,
+      winner?: string | null
+    ): AuctionSuccessfulEventFilter;
+
+    "AuctionCancelled(bytes32,uint256,address)"(
+      id?: null,
+      assetId?: BigNumberish | null,
+      seller?: string | null
+    ): AuctionCancelledEventFilter;
+    AuctionCancelled(
+      id?: null,
+      assetId?: BigNumberish | null,
+      seller?: string | null
+    ): AuctionCancelledEventFilter;
+
+    "Pause()"(): PauseEventFilter;
+    Pause(): PauseEventFilter;
+
+    "Unpause()"(): UnpauseEventFilter;
+    Unpause(): UnpauseEventFilter;
+
+    "OwnershipTransferred(address,address)"(
+      previousOwner?: string | null,
+      newOwner?: string | null
+    ): OwnershipTransferredEventFilter;
+    OwnershipTransferred(
+      previousOwner?: string | null,
+      newOwner?: string | null
+    ): OwnershipTransferredEventFilter;
+
+    "Migrated(string,string)"(
+      contractName?: null,
+      migrationId?: null
+    ): MigratedEventFilter;
+    Migrated(contractName?: null, migrationId?: null): MigratedEventFilter;
   };
 
   estimateGas: {
-    upgradeTo(
-      newImplementation: string,
+    setOwnerCutPerMillion(
+      _ownerCutPerMillion: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    upgradeToAndCall(
-      newImplementation: string,
-      data: BytesLike,
-      overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
-    implementation(overrides?: CallOverrides): Promise<BigNumber>;
-
-    changeAdmin(
-      newAdmin: string,
+    setLegacyNFTAddress(
+      _legacyNFTAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    admin(overrides?: CallOverrides): Promise<BigNumber>;
+    ERC721_Interface(overrides?: CallOverrides): Promise<BigNumber>;
+
+    InterfaceId_ValidateFingerprint(
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    unpause(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    acceptedToken(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "cancelOrder(uint256)"(
+      assetId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    "cancelOrder(address,uint256)"(
+      nftAddress: string,
+      assetId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    paused(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "createOrder(address,uint256,uint256,uint256)"(
+      nftAddress: string,
+      assetId: BigNumberish,
+      priceInWei: BigNumberish,
+      expiresAt: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    "createOrder(uint256,uint256,uint256)"(
+      assetId: BigNumberish,
+      priceInWei: BigNumberish,
+      expiresAt: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    "initialize()"(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    "initialize(address,address,address)"(
+      _acceptedToken: string,
+      _legacyNFTAddress: string,
+      _owner: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    "initialize(address)"(
+      _sender: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    pause(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    owner(overrides?: CallOverrides): Promise<BigNumber>;
+
+    safeExecuteOrder(
+      nftAddress: string,
+      assetId: BigNumberish,
+      price: BigNumberish,
+      fingerprint: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    ownerCutPerMillion(overrides?: CallOverrides): Promise<BigNumber>;
+
+    publicationFeeInWei(overrides?: CallOverrides): Promise<BigNumber>;
+
+    "executeOrder(address,uint256,uint256)"(
+      nftAddress: string,
+      assetId: BigNumberish,
+      price: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    "executeOrder(uint256,uint256)"(
+      assetId: BigNumberish,
+      price: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    setPublicationFee(
+      _publicationFee: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    isMigrated(
+      contractName: string,
+      migrationId: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    legacyNFTAddress(overrides?: CallOverrides): Promise<BigNumber>;
+
+    auctionByAssetId(
+      assetId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    orderByAssetId(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    transferOwnership(
+      newOwner: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    upgradeTo(
-      newImplementation: string,
+    setOwnerCutPerMillion(
+      _ownerCutPerMillion: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    upgradeToAndCall(
-      newImplementation: string,
-      data: BytesLike,
-      overrides?: PayableOverrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    implementation(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    changeAdmin(
-      newAdmin: string,
+    setLegacyNFTAddress(
+      _legacyNFTAddress: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    admin(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    ERC721_Interface(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    InterfaceId_ValidateFingerprint(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    unpause(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    acceptedToken(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "cancelOrder(uint256)"(
+      assetId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "cancelOrder(address,uint256)"(
+      nftAddress: string,
+      assetId: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    paused(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    "createOrder(address,uint256,uint256,uint256)"(
+      nftAddress: string,
+      assetId: BigNumberish,
+      priceInWei: BigNumberish,
+      expiresAt: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "createOrder(uint256,uint256,uint256)"(
+      assetId: BigNumberish,
+      priceInWei: BigNumberish,
+      expiresAt: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "initialize()"(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "initialize(address,address,address)"(
+      _acceptedToken: string,
+      _legacyNFTAddress: string,
+      _owner: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "initialize(address)"(
+      _sender: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    pause(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    safeExecuteOrder(
+      nftAddress: string,
+      assetId: BigNumberish,
+      price: BigNumberish,
+      fingerprint: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    ownerCutPerMillion(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    publicationFeeInWei(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "executeOrder(address,uint256,uint256)"(
+      nftAddress: string,
+      assetId: BigNumberish,
+      price: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "executeOrder(uint256,uint256)"(
+      assetId: BigNumberish,
+      price: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setPublicationFee(
+      _publicationFee: BigNumberish,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    isMigrated(
+      contractName: string,
+      migrationId: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    legacyNFTAddress(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    auctionByAssetId(
+      assetId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    orderByAssetId(
+      arg0: string,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    transferOwnership(
+      newOwner: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
   };
 }
