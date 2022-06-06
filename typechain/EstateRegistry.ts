@@ -29,130 +29,152 @@ import type {
 export interface EstateRegistryInterface extends utils.Interface {
   functions: {
     "supportsInterface(bytes4)": FunctionFragment;
-    "proxyOwner()": FunctionFragment;
     "name()": FunctionFragment;
+    "initialize(string,string,address)": FunctionFragment;
+    "initialize(string,string)": FunctionFragment;
+    "initialize()": FunctionFragment;
+    "initialize(address)": FunctionFragment;
+    "updateManager(address,address)": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
     "approve(address,uint256)": FunctionFragment;
-    "ownerOfLand(int256,int256)": FunctionFragment;
-    "setLatestToNow(address)": FunctionFragment;
+    "landIdEstate(uint256)": FunctionFragment;
+    "onERC721Received(address,address,uint256,bytes)": FunctionFragment;
+    "getFingerprint(uint256)": FunctionFragment;
     "totalSupply()": FunctionFragment;
-    "assignNewParcel(int256,int256,address)": FunctionFragment;
-    "ownerOfLandMany(int256[],int256[])": FunctionFragment;
-    "latestPing(address)": FunctionFragment;
-    "updateManyLandData(int256[],int256[],string)": FunctionFragment;
+    "unregisterBalance()": FunctionFragment;
+    "setLandUpdateOperator(uint256,uint256,address)": FunctionFragment;
     "transferFrom(address,address,uint256)": FunctionFragment;
-    "isAuthorized(address,uint256)": FunctionFragment;
-    "authorizedDeploy(address)": FunctionFragment;
+    "updateLandData(uint256,uint256,string)": FunctionFragment;
     "tokenOfOwnerByIndex(address,uint256)": FunctionFragment;
-    "decimals()": FunctionFragment;
-    "authorizeDeploy(address)": FunctionFragment;
-    "transferLand(int256,int256,address)": FunctionFragment;
+    "estateLandBalance()": FunctionFragment;
+    "estateLandIds(uint256,uint256)": FunctionFragment;
+    "setManyLandUpdateOperator(uint256,uint256[],address)": FunctionFragment;
+    "transferManyLands(uint256,uint256[],address)": FunctionFragment;
+    "updateManyLandData(uint256,uint256[],string)": FunctionFragment;
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
     "safeTransferFrom(address,address,uint256,bytes)": FunctionFragment;
-    "initialize(bytes)": FunctionFragment;
-    "landData(int256,int256)": FunctionFragment;
-    "transferManyLand(int256[],int256[],address)": FunctionFragment;
+    "setEstateLandBalanceToken()": FunctionFragment;
     "exists(uint256)": FunctionFragment;
-    "exists(int256,int256)": FunctionFragment;
-    "tokensOf(address)": FunctionFragment;
+    "tokenByIndex(uint256)": FunctionFragment;
+    "setLANDRegistry(address)": FunctionFragment;
+    "updateMetadata(uint256,string)": FunctionFragment;
     "ping()": FunctionFragment;
+    "registeredBalance(address)": FunctionFragment;
     "ownerOf(uint256)": FunctionFragment;
-    "GET_METADATA()": FunctionFragment;
     "isUpdateAuthorized(address,uint256)": FunctionFragment;
-    "tokenMetadata(uint256)": FunctionFragment;
-    "encodeTokenId(int256,int256)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
-    "currentContract()": FunctionFragment;
-    "description()": FunctionFragment;
-    "decodeTokenId(uint256)": FunctionFragment;
-    "assignMultipleParcels(int256[],int256[],address)": FunctionFragment;
-    "createEstateWithMetadata(int256[],int256[],address,string)": FunctionFragment;
-    "landOf(address)": FunctionFragment;
+    "setManyUpdateOperator(uint256[],address)": FunctionFragment;
+    "safeTransferManyFrom(address,address,uint256[])": FunctionFragment;
+    "safeTransferManyFrom(address,address,uint256[],bytes)": FunctionFragment;
+    "registry()": FunctionFragment;
     "owner()": FunctionFragment;
-    "setEstateRegistry(address)": FunctionFragment;
+    "verifyFingerprint(uint256,bytes)": FunctionFragment;
     "symbol()": FunctionFragment;
     "updateOperator(uint256)": FunctionFragment;
+    "estateLandIndex(uint256,uint256)": FunctionFragment;
     "setApprovalForAll(address,bool)": FunctionFragment;
+    "transferLand(uint256,uint256,address)": FunctionFragment;
+    "getMetadata(uint256)": FunctionFragment;
     "setUpdateOperator(uint256,address)": FunctionFragment;
-    "createEstate(int256[],int256[],address)": FunctionFragment;
-    "updateLandData(int256,int256,string)": FunctionFragment;
-    "estateRegistry()": FunctionFragment;
+    "getLandEstateId(uint256)": FunctionFragment;
+    "isMigrated(string,string)": FunctionFragment;
+    "registerBalance()": FunctionFragment;
+    "tokenURI(uint256)": FunctionFragment;
+    "mint(address,string)": FunctionFragment;
+    "getLANDsSize(address)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
-    "getApprovedAddress(uint256)": FunctionFragment;
+    "setUpdateManager(address,address,bool)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
-    "transferManyLandToEstate(int256[],int256[],uint256)": FunctionFragment;
-    "transferLandToEstate(int256,int256,uint256)": FunctionFragment;
-    "forbidDeploy(address)": FunctionFragment;
+    "getEstateSize(uint256)": FunctionFragment;
   };
 
   getFunction(
     nameOrSignatureOrTopic:
       | "supportsInterface"
-      | "proxyOwner"
       | "name"
+      | "initialize(string,string,address)"
+      | "initialize(string,string)"
+      | "initialize()"
+      | "initialize(address)"
+      | "updateManager"
       | "getApproved"
       | "approve"
-      | "ownerOfLand"
-      | "setLatestToNow"
+      | "landIdEstate"
+      | "onERC721Received"
+      | "getFingerprint"
       | "totalSupply"
-      | "assignNewParcel"
-      | "ownerOfLandMany"
-      | "latestPing"
-      | "updateManyLandData"
+      | "unregisterBalance"
+      | "setLandUpdateOperator"
       | "transferFrom"
-      | "isAuthorized"
-      | "authorizedDeploy"
+      | "updateLandData"
       | "tokenOfOwnerByIndex"
-      | "decimals"
-      | "authorizeDeploy"
-      | "transferLand"
+      | "estateLandBalance"
+      | "estateLandIds"
+      | "setManyLandUpdateOperator"
+      | "transferManyLands"
+      | "updateManyLandData"
       | "safeTransferFrom(address,address,uint256)"
       | "safeTransferFrom(address,address,uint256,bytes)"
-      | "initialize"
-      | "landData"
-      | "transferManyLand"
-      | "exists(uint256)"
-      | "exists(int256,int256)"
-      | "tokensOf"
+      | "setEstateLandBalanceToken"
+      | "exists"
+      | "tokenByIndex"
+      | "setLANDRegistry"
+      | "updateMetadata"
       | "ping"
+      | "registeredBalance"
       | "ownerOf"
-      | "GET_METADATA"
       | "isUpdateAuthorized"
-      | "tokenMetadata"
-      | "encodeTokenId"
       | "balanceOf"
-      | "currentContract"
-      | "description"
-      | "decodeTokenId"
-      | "assignMultipleParcels"
-      | "createEstateWithMetadata"
-      | "landOf"
+      | "setManyUpdateOperator"
+      | "safeTransferManyFrom(address,address,uint256[])"
+      | "safeTransferManyFrom(address,address,uint256[],bytes)"
+      | "registry"
       | "owner"
-      | "setEstateRegistry"
+      | "verifyFingerprint"
       | "symbol"
       | "updateOperator"
+      | "estateLandIndex"
       | "setApprovalForAll"
+      | "transferLand"
+      | "getMetadata"
       | "setUpdateOperator"
-      | "createEstate"
-      | "updateLandData"
-      | "estateRegistry"
+      | "getLandEstateId"
+      | "isMigrated"
+      | "registerBalance"
+      | "tokenURI"
+      | "mint"
+      | "getLANDsSize"
       | "isApprovedForAll"
-      | "getApprovedAddress"
+      | "setUpdateManager"
       | "transferOwnership"
-      | "transferManyLandToEstate"
-      | "transferLandToEstate"
-      | "forbidDeploy"
+      | "getEstateSize"
   ): FunctionFragment;
 
   encodeFunctionData(
     functionFragment: "supportsInterface",
     values: [BytesLike]
   ): string;
+  encodeFunctionData(functionFragment: "name", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "proxyOwner",
+    functionFragment: "initialize(string,string,address)",
+    values: [string, string, string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "initialize(string,string)",
+    values: [string, string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "initialize()",
     values?: undefined
   ): string;
-  encodeFunctionData(functionFragment: "name", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "initialize(address)",
+    values: [string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "updateManager",
+    values: [string, string]
+  ): string;
   encodeFunctionData(
     functionFragment: "getApproved",
     values: [BigNumberish]
@@ -162,54 +184,60 @@ export interface EstateRegistryInterface extends utils.Interface {
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "ownerOfLand",
-    values: [BigNumberish, BigNumberish]
+    functionFragment: "landIdEstate",
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "setLatestToNow",
-    values: [string]
+    functionFragment: "onERC721Received",
+    values: [string, string, BigNumberish, BytesLike]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getFingerprint",
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "totalSupply",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "assignNewParcel",
+    functionFragment: "unregisterBalance",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setLandUpdateOperator",
     values: [BigNumberish, BigNumberish, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "ownerOfLandMany",
-    values: [BigNumberish[], BigNumberish[]]
-  ): string;
-  encodeFunctionData(functionFragment: "latestPing", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "updateManyLandData",
-    values: [BigNumberish[], BigNumberish[], string]
   ): string;
   encodeFunctionData(
     functionFragment: "transferFrom",
     values: [string, string, BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "isAuthorized",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "authorizedDeploy",
-    values: [string]
+    functionFragment: "updateLandData",
+    values: [BigNumberish, BigNumberish, string]
   ): string;
   encodeFunctionData(
     functionFragment: "tokenOfOwnerByIndex",
     values: [string, BigNumberish]
   ): string;
-  encodeFunctionData(functionFragment: "decimals", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "authorizeDeploy",
-    values: [string]
+    functionFragment: "estateLandBalance",
+    values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "transferLand",
-    values: [BigNumberish, BigNumberish, string]
+    functionFragment: "estateLandIds",
+    values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setManyLandUpdateOperator",
+    values: [BigNumberish, BigNumberish[], string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "transferManyLands",
+    values: [BigNumberish, BigNumberish[], string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "updateManyLandData",
+    values: [BigNumberish, BigNumberish[], string]
   ): string;
   encodeFunctionData(
     functionFragment: "safeTransferFrom(address,address,uint256)",
@@ -220,73 +248,56 @@ export interface EstateRegistryInterface extends utils.Interface {
     values: [string, string, BigNumberish, BytesLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "initialize",
-    values: [BytesLike]
+    functionFragment: "setEstateLandBalanceToken",
+    values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "landData",
-    values: [BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "transferManyLand",
-    values: [BigNumberish[], BigNumberish[], string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "exists(uint256)",
+    functionFragment: "exists",
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "exists(int256,int256)",
-    values: [BigNumberish, BigNumberish]
+    functionFragment: "tokenByIndex",
+    values: [BigNumberish]
   ): string;
-  encodeFunctionData(functionFragment: "tokensOf", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "setLANDRegistry",
+    values: [string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "updateMetadata",
+    values: [BigNumberish, string]
+  ): string;
   encodeFunctionData(functionFragment: "ping", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "registeredBalance",
+    values: [string]
+  ): string;
   encodeFunctionData(
     functionFragment: "ownerOf",
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "GET_METADATA",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
     functionFragment: "isUpdateAuthorized",
     values: [string, BigNumberish]
   ): string;
-  encodeFunctionData(
-    functionFragment: "tokenMetadata",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "encodeTokenId",
-    values: [BigNumberish, BigNumberish]
-  ): string;
   encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
   encodeFunctionData(
-    functionFragment: "currentContract",
-    values?: undefined
+    functionFragment: "setManyUpdateOperator",
+    values: [BigNumberish[], string]
   ): string;
   encodeFunctionData(
-    functionFragment: "description",
-    values?: undefined
+    functionFragment: "safeTransferManyFrom(address,address,uint256[])",
+    values: [string, string, BigNumberish[]]
   ): string;
   encodeFunctionData(
-    functionFragment: "decodeTokenId",
-    values: [BigNumberish]
+    functionFragment: "safeTransferManyFrom(address,address,uint256[],bytes)",
+    values: [string, string, BigNumberish[], BytesLike]
   ): string;
-  encodeFunctionData(
-    functionFragment: "assignMultipleParcels",
-    values: [BigNumberish[], BigNumberish[], string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "createEstateWithMetadata",
-    values: [BigNumberish[], BigNumberish[], string, string]
-  ): string;
-  encodeFunctionData(functionFragment: "landOf", values: [string]): string;
+  encodeFunctionData(functionFragment: "registry", values?: undefined): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "setEstateRegistry",
-    values: [string]
+    functionFragment: "verifyFingerprint",
+    values: [BigNumberish, BytesLike]
   ): string;
   encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
   encodeFunctionData(
@@ -294,67 +305,106 @@ export interface EstateRegistryInterface extends utils.Interface {
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
+    functionFragment: "estateLandIndex",
+    values: [BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "setApprovalForAll",
     values: [string, boolean]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "transferLand",
+    values: [BigNumberish, BigNumberish, string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getMetadata",
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "setUpdateOperator",
     values: [BigNumberish, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "createEstate",
-    values: [BigNumberish[], BigNumberish[], string]
+    functionFragment: "getLandEstateId",
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(
-    functionFragment: "updateLandData",
-    values: [BigNumberish, BigNumberish, string]
+    functionFragment: "isMigrated",
+    values: [string, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "estateRegistry",
+    functionFragment: "registerBalance",
     values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "tokenURI",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "mint",
+    values: [string, string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getLANDsSize",
+    values: [string]
   ): string;
   encodeFunctionData(
     functionFragment: "isApprovedForAll",
     values: [string, string]
   ): string;
   encodeFunctionData(
-    functionFragment: "getApprovedAddress",
-    values: [BigNumberish]
+    functionFragment: "setUpdateManager",
+    values: [string, string, boolean]
   ): string;
   encodeFunctionData(
     functionFragment: "transferOwnership",
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "transferManyLandToEstate",
-    values: [BigNumberish[], BigNumberish[], BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "transferLandToEstate",
-    values: [BigNumberish, BigNumberish, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "forbidDeploy",
-    values: [string]
+    functionFragment: "getEstateSize",
+    values: [BigNumberish]
   ): string;
 
   decodeFunctionResult(
     functionFragment: "supportsInterface",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "proxyOwner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "initialize(string,string,address)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "initialize(string,string)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "initialize()",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "initialize(address)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "updateManager",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "getApproved",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "ownerOfLand",
+    functionFragment: "landIdEstate",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setLatestToNow",
+    functionFragment: "onERC721Received",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getFingerprint",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -362,16 +412,11 @@ export interface EstateRegistryInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "assignNewParcel",
+    functionFragment: "unregisterBalance",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "ownerOfLandMany",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "latestPing", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "updateManyLandData",
+    functionFragment: "setLandUpdateOperator",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -379,24 +424,31 @@ export interface EstateRegistryInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "isAuthorized",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "authorizedDeploy",
+    functionFragment: "updateLandData",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
     functionFragment: "tokenOfOwnerByIndex",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "decimals", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "authorizeDeploy",
+    functionFragment: "estateLandBalance",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "transferLand",
+    functionFragment: "estateLandIds",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setManyLandUpdateOperator",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "transferManyLands",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "updateManyLandData",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -407,64 +459,50 @@ export interface EstateRegistryInterface extends utils.Interface {
     functionFragment: "safeTransferFrom(address,address,uint256,bytes)",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "landData", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "transferManyLand",
+    functionFragment: "setEstateLandBalanceToken",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "exists", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "tokenByIndex",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "exists(uint256)",
+    functionFragment: "setLANDRegistry",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "exists(int256,int256)",
+    functionFragment: "updateMetadata",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "tokensOf", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "ping", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "ownerOf", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "GET_METADATA",
+    functionFragment: "registeredBalance",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "ownerOf", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "isUpdateAuthorized",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(
-    functionFragment: "tokenMetadata",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "encodeTokenId",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "currentContract",
+    functionFragment: "setManyUpdateOperator",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "description",
+    functionFragment: "safeTransferManyFrom(address,address,uint256[])",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "decodeTokenId",
+    functionFragment: "safeTransferManyFrom(address,address,uint256[],bytes)",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(
-    functionFragment: "assignMultipleParcels",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "createEstateWithMetadata",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "landOf", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "registry", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "setEstateRegistry",
+    functionFragment: "verifyFingerprint",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
@@ -473,7 +511,19 @@ export interface EstateRegistryInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "estateLandIndex",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "setApprovalForAll",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "transferLand",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getMetadata",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -481,15 +531,18 @@ export interface EstateRegistryInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "createEstate",
+    functionFragment: "getLandEstateId",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "isMigrated", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "updateLandData",
+    functionFragment: "registerBalance",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "tokenURI", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "mint", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "estateRegistry",
+    functionFragment: "getLANDsSize",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -497,7 +550,7 @@ export interface EstateRegistryInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "getApprovedAddress",
+    functionFragment: "setUpdateManager",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -505,63 +558,129 @@ export interface EstateRegistryInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "transferManyLandToEstate",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "transferLandToEstate",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "forbidDeploy",
+    functionFragment: "getEstateSize",
     data: BytesLike
   ): Result;
 
   events: {
-    "EstateRegistrySet(address)": EventFragment;
+    "OwnershipTransferred(address,address)": EventFragment;
+    "Transfer(address,address,uint256)": EventFragment;
+    "Approval(address,address,uint256)": EventFragment;
+    "ApprovalForAll(address,address,bool)": EventFragment;
+    "CreateEstate(address,uint256,string)": EventFragment;
+    "AddLand(uint256,uint256)": EventFragment;
+    "RemoveLand(uint256,uint256,address)": EventFragment;
     "Update(uint256,address,address,string)": EventFragment;
     "UpdateOperator(uint256,address)": EventFragment;
-    "Transfer(address,address,uint256,address,bytes)": EventFragment;
-    "Transfer(address,address,uint256)": EventFragment;
-    "Transfer(address,address,uint256,address,bytes,bytes)": EventFragment;
-    "ApprovalForAll(address,address,bool)": EventFragment;
-    "Approval(address,address,uint256)": EventFragment;
-    "OwnerUpdate(address,address)": EventFragment;
+    "UpdateManager(address,address,address,bool)": EventFragment;
+    "SetLANDRegistry(address)": EventFragment;
+    "SetEstateLandBalanceToken(address,address)": EventFragment;
+    "Migrated(string,string)": EventFragment;
   };
 
-  getEvent(nameOrSignatureOrTopic: "EstateRegistrySet"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Approval"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "ApprovalForAll"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "CreateEstate"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "AddLand"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "RemoveLand"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Update"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "UpdateOperator"): EventFragment;
-  getEvent(
-    nameOrSignatureOrTopic: "Transfer(address,address,uint256,address,bytes)"
-  ): EventFragment;
-  getEvent(
-    nameOrSignatureOrTopic: "Transfer(address,address,uint256)"
-  ): EventFragment;
-  getEvent(
-    nameOrSignatureOrTopic: "Transfer(address,address,uint256,address,bytes,bytes)"
-  ): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ApprovalForAll"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Approval"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "OwnerUpdate"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "UpdateManager"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "SetLANDRegistry"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "SetEstateLandBalanceToken"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Migrated"): EventFragment;
 }
 
-export interface EstateRegistrySetEventObject {
-  registry: string;
+export interface OwnershipTransferredEventObject {
+  previousOwner: string;
+  newOwner: string;
 }
-export type EstateRegistrySetEvent = TypedEvent<
-  [string],
-  EstateRegistrySetEventObject
+export type OwnershipTransferredEvent = TypedEvent<
+  [string, string],
+  OwnershipTransferredEventObject
 >;
 
-export type EstateRegistrySetEventFilter =
-  TypedEventFilter<EstateRegistrySetEvent>;
+export type OwnershipTransferredEventFilter =
+  TypedEventFilter<OwnershipTransferredEvent>;
+
+export interface TransferEventObject {
+  _from: string;
+  _to: string;
+  _tokenId: BigNumber;
+}
+export type TransferEvent = TypedEvent<
+  [string, string, BigNumber],
+  TransferEventObject
+>;
+
+export type TransferEventFilter = TypedEventFilter<TransferEvent>;
+
+export interface ApprovalEventObject {
+  _owner: string;
+  _approved: string;
+  _tokenId: BigNumber;
+}
+export type ApprovalEvent = TypedEvent<
+  [string, string, BigNumber],
+  ApprovalEventObject
+>;
+
+export type ApprovalEventFilter = TypedEventFilter<ApprovalEvent>;
+
+export interface ApprovalForAllEventObject {
+  _owner: string;
+  _operator: string;
+  _approved: boolean;
+}
+export type ApprovalForAllEvent = TypedEvent<
+  [string, string, boolean],
+  ApprovalForAllEventObject
+>;
+
+export type ApprovalForAllEventFilter = TypedEventFilter<ApprovalForAllEvent>;
+
+export interface CreateEstateEventObject {
+  _owner: string;
+  _estateId: BigNumber;
+  _data: string;
+}
+export type CreateEstateEvent = TypedEvent<
+  [string, BigNumber, string],
+  CreateEstateEventObject
+>;
+
+export type CreateEstateEventFilter = TypedEventFilter<CreateEstateEvent>;
+
+export interface AddLandEventObject {
+  _estateId: BigNumber;
+  _landId: BigNumber;
+}
+export type AddLandEvent = TypedEvent<
+  [BigNumber, BigNumber],
+  AddLandEventObject
+>;
+
+export type AddLandEventFilter = TypedEventFilter<AddLandEvent>;
+
+export interface RemoveLandEventObject {
+  _estateId: BigNumber;
+  _landId: BigNumber;
+  _destinatary: string;
+}
+export type RemoveLandEvent = TypedEvent<
+  [BigNumber, BigNumber, string],
+  RemoveLandEventObject
+>;
+
+export type RemoveLandEventFilter = TypedEventFilter<RemoveLandEvent>;
 
 export interface UpdateEventObject {
-  assetId: BigNumber;
-  holder: string;
-  operator: string;
-  data: string;
+  _assetId: BigNumber;
+  _holder: string;
+  _operator: string;
+  _data: string;
 }
 export type UpdateEvent = TypedEvent<
   [BigNumber, string, string, string],
@@ -571,8 +690,8 @@ export type UpdateEvent = TypedEvent<
 export type UpdateEventFilter = TypedEventFilter<UpdateEvent>;
 
 export interface UpdateOperatorEventObject {
-  assetId: BigNumber;
-  operator: string;
+  _estateId: BigNumber;
+  _operator: string;
 }
 export type UpdateOperatorEvent = TypedEvent<
   [BigNumber, string],
@@ -581,85 +700,48 @@ export type UpdateOperatorEvent = TypedEvent<
 
 export type UpdateOperatorEventFilter = TypedEventFilter<UpdateOperatorEvent>;
 
-export interface Transfer_address_address_uint256_address_bytes_EventObject {
-  from: string;
-  to: string;
-  assetId: BigNumber;
-  operator: string;
-  userData: string;
+export interface UpdateManagerEventObject {
+  _owner: string;
+  _operator: string;
+  _caller: string;
+  _approved: boolean;
 }
-export type Transfer_address_address_uint256_address_bytes_Event = TypedEvent<
-  [string, string, BigNumber, string, string],
-  Transfer_address_address_uint256_address_bytes_EventObject
+export type UpdateManagerEvent = TypedEvent<
+  [string, string, string, boolean],
+  UpdateManagerEventObject
 >;
 
-export type Transfer_address_address_uint256_address_bytes_EventFilter =
-  TypedEventFilter<Transfer_address_address_uint256_address_bytes_Event>;
+export type UpdateManagerEventFilter = TypedEventFilter<UpdateManagerEvent>;
 
-export interface Transfer_address_address_uint256_EventObject {
-  from: string;
-  to: string;
-  assetId: BigNumber;
+export interface SetLANDRegistryEventObject {
+  _registry: string;
 }
-export type Transfer_address_address_uint256_Event = TypedEvent<
-  [string, string, BigNumber],
-  Transfer_address_address_uint256_EventObject
+export type SetLANDRegistryEvent = TypedEvent<
+  [string],
+  SetLANDRegistryEventObject
 >;
 
-export type Transfer_address_address_uint256_EventFilter =
-  TypedEventFilter<Transfer_address_address_uint256_Event>;
+export type SetLANDRegistryEventFilter = TypedEventFilter<SetLANDRegistryEvent>;
 
-export interface Transfer_address_address_uint256_address_bytes_bytes_EventObject {
-  from: string;
-  to: string;
-  assetId: BigNumber;
-  operator: string;
-  userData: string;
-  operatorData: string;
+export interface SetEstateLandBalanceTokenEventObject {
+  _previousEstateLandBalance: string;
+  _newEstateLandBalance: string;
 }
-export type Transfer_address_address_uint256_address_bytes_bytes_Event =
-  TypedEvent<
-    [string, string, BigNumber, string, string, string],
-    Transfer_address_address_uint256_address_bytes_bytes_EventObject
-  >;
-
-export type Transfer_address_address_uint256_address_bytes_bytes_EventFilter =
-  TypedEventFilter<Transfer_address_address_uint256_address_bytes_bytes_Event>;
-
-export interface ApprovalForAllEventObject {
-  operator: string;
-  holder: string;
-  authorized: boolean;
-}
-export type ApprovalForAllEvent = TypedEvent<
-  [string, string, boolean],
-  ApprovalForAllEventObject
->;
-
-export type ApprovalForAllEventFilter = TypedEventFilter<ApprovalForAllEvent>;
-
-export interface ApprovalEventObject {
-  owner: string;
-  operator: string;
-  assetId: BigNumber;
-}
-export type ApprovalEvent = TypedEvent<
-  [string, string, BigNumber],
-  ApprovalEventObject
->;
-
-export type ApprovalEventFilter = TypedEventFilter<ApprovalEvent>;
-
-export interface OwnerUpdateEventObject {
-  _prevOwner: string;
-  _newOwner: string;
-}
-export type OwnerUpdateEvent = TypedEvent<
+export type SetEstateLandBalanceTokenEvent = TypedEvent<
   [string, string],
-  OwnerUpdateEventObject
+  SetEstateLandBalanceTokenEventObject
 >;
 
-export type OwnerUpdateEventFilter = TypedEventFilter<OwnerUpdateEvent>;
+export type SetEstateLandBalanceTokenEventFilter =
+  TypedEventFilter<SetEstateLandBalanceTokenEvent>;
+
+export interface MigratedEventObject {
+  contractName: string;
+  migrationId: string;
+}
+export type MigratedEvent = TypedEvent<[string, string], MigratedEventObject>;
+
+export type MigratedEventFilter = TypedEventFilter<MigratedEvent>;
 
 export interface EstateRegistry extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
@@ -689,209 +771,223 @@ export interface EstateRegistry extends BaseContract {
 
   functions: {
     supportsInterface(
-      _interfaceID: BytesLike,
+      _interfaceId: BytesLike,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
-    proxyOwner(overrides?: CallOverrides): Promise<[string]>;
-
     name(overrides?: CallOverrides): Promise<[string]>;
 
+    "initialize(string,string,address)"(
+      _name: string,
+      _symbol: string,
+      _registry: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    "initialize(string,string)"(
+      _name: string,
+      _symbol: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    "initialize()"(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    "initialize(address)"(
+      _sender: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    updateManager(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
     getApproved(
-      assetId: BigNumberish,
+      _tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[string]>;
 
     approve(
-      operator: string,
-      assetId: BigNumberish,
+      _to: string,
+      _tokenId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    ownerOfLand(
-      x: BigNumberish,
-      y: BigNumberish,
+    landIdEstate(
+      arg0: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string]>;
+    ): Promise<[BigNumber]>;
 
-    setLatestToNow(
-      user: string,
+    onERC721Received(
+      _operator: string,
+      _from: string,
+      _tokenId: BigNumberish,
+      _data: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
+
+    getFingerprint(
+      estateId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string] & { result: string }>;
 
     totalSupply(overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    assignNewParcel(
-      x: BigNumberish,
-      y: BigNumberish,
-      beneficiary: string,
+    unregisterBalance(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    ownerOfLandMany(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      overrides?: CallOverrides
-    ): Promise<[string[]]>;
-
-    latestPing(arg0: string, overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    updateManyLandData(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      data: string,
+    setLandUpdateOperator(
+      estateId: BigNumberish,
+      landId: BigNumberish,
+      operator: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     transferFrom(
-      from: string,
-      to: string,
-      assetId: BigNumberish,
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    isAuthorized(
-      operator: string,
-      assetId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
-
-    authorizedDeploy(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
+    updateLandData(
+      estateId: BigNumberish,
+      landId: BigNumberish,
+      data: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
 
     tokenOfOwnerByIndex(
-      owner: string,
-      index: BigNumberish,
+      _owner: string,
+      _index: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber] & { assetId: BigNumber }>;
+    ): Promise<[BigNumber]>;
 
-    decimals(overrides?: CallOverrides): Promise<[BigNumber]>;
+    estateLandBalance(overrides?: CallOverrides): Promise<[string]>;
 
-    authorizeDeploy(
-      beneficiary: string,
+    estateLandIds(
+      arg0: BigNumberish,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    setManyLandUpdateOperator(
+      _estateId: BigNumberish,
+      _landIds: BigNumberish[],
+      _operator: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    transferLand(
-      x: BigNumberish,
-      y: BigNumberish,
-      to: string,
+    transferManyLands(
+      estateId: BigNumberish,
+      landIds: BigNumberish[],
+      destinatary: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    updateManyLandData(
+      estateId: BigNumberish,
+      landIds: BigNumberish[],
+      data: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     "safeTransferFrom(address,address,uint256)"(
-      from: string,
-      to: string,
-      assetId: BigNumberish,
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     "safeTransferFrom(address,address,uint256,bytes)"(
-      from: string,
-      to: string,
-      assetId: BigNumberish,
-      userData: BytesLike,
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      _data: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    initialize(
-      arg0: BytesLike,
+    setEstateLandBalanceToken(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    landData(
-      x: BigNumberish,
-      y: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
-
-    transferManyLand(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      to: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    "exists(uint256)"(
-      assetId: BigNumberish,
+    exists(
+      _tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
-    "exists(int256,int256)"(
-      x: BigNumberish,
-      y: BigNumberish,
+    tokenByIndex(
+      _index: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[boolean]>;
+    ): Promise<[BigNumber]>;
 
-    tokensOf(owner: string, overrides?: CallOverrides): Promise<[BigNumber[]]>;
+    setLANDRegistry(
+      _registry: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    updateMetadata(
+      estateId: BigNumberish,
+      metadata: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
 
     ping(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    ownerOf(
-      assetId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
-
-    GET_METADATA(overrides?: CallOverrides): Promise<[string]>;
-
-    isUpdateAuthorized(
-      operator: string,
-      assetId: BigNumberish,
+    registeredBalance(
+      arg0: string,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
-    tokenMetadata(
-      assetId: BigNumberish,
+    ownerOf(
+      _tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[string]>;
 
-    encodeTokenId(
-      x: BigNumberish,
-      y: BigNumberish,
+    isUpdateAuthorized(
+      operator: string,
+      estateId: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+    ): Promise<[boolean]>;
 
-    balanceOf(owner: string, overrides?: CallOverrides): Promise<[BigNumber]>;
+    balanceOf(_owner: string, overrides?: CallOverrides): Promise<[BigNumber]>;
 
-    currentContract(overrides?: CallOverrides): Promise<[string]>;
-
-    description(overrides?: CallOverrides): Promise<[string]>;
-
-    decodeTokenId(
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber, BigNumber]>;
-
-    assignMultipleParcels(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      beneficiary: string,
+    setManyUpdateOperator(
+      _estateIds: BigNumberish[],
+      _operator: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    createEstateWithMetadata(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      beneficiary: string,
-      metadata: string,
+    "safeTransferManyFrom(address,address,uint256[])"(
+      from: string,
+      to: string,
+      estateIds: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    landOf(
-      owner: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber[], BigNumber[]]>;
+    "safeTransferManyFrom(address,address,uint256[],bytes)"(
+      from: string,
+      to: string,
+      estateIds: BigNumberish[],
+      data: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    registry(overrides?: CallOverrides): Promise<[string]>;
 
     owner(overrides?: CallOverrides): Promise<[string]>;
 
-    setEstateRegistry(
-      registry: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    verifyFingerprint(
+      estateId: BigNumberish,
+      fingerprint: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
 
     symbol(overrides?: CallOverrides): Promise<[string]>;
 
@@ -900,268 +996,300 @@ export interface EstateRegistry extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[string]>;
 
-    setApprovalForAll(
-      operator: string,
-      authorized: boolean,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    setUpdateOperator(
-      assetId: BigNumberish,
-      operator: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    createEstate(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      beneficiary: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    updateLandData(
-      x: BigNumberish,
-      y: BigNumberish,
-      data: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    estateRegistry(overrides?: CallOverrides): Promise<[string]>;
-
-    isApprovedForAll(
-      assetHolder: string,
-      operator: string,
+    estateLandIndex(
+      arg0: BigNumberish,
+      arg1: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[boolean]>;
+    ): Promise<[BigNumber]>;
 
-    getApprovedAddress(
-      assetId: BigNumberish,
+    setApprovalForAll(
+      _to: string,
+      _approved: boolean,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    transferLand(
+      estateId: BigNumberish,
+      landId: BigNumberish,
+      destinatary: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    getMetadata(
+      estateId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[string]>;
 
+    setUpdateOperator(
+      estateId: BigNumberish,
+      operator: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    getLandEstateId(
+      landId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    isMigrated(
+      contractName: string,
+      migrationId: string,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
+    registerBalance(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    tokenURI(
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[string]>;
+
+    mint(
+      to: string,
+      metadata: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    getLANDsSize(
+      _owner: string,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
+    isApprovedForAll(
+      _owner: string,
+      _operator: string,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
+    setUpdateManager(
+      _owner: string,
+      _operator: string,
+      _approved: boolean,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
     transferOwnership(
-      _newOwner: string,
+      newOwner: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    transferManyLandToEstate(
-      x: BigNumberish[],
-      y: BigNumberish[],
+    getEstateSize(
       estateId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    transferLandToEstate(
-      x: BigNumberish,
-      y: BigNumberish,
-      estateId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    forbidDeploy(
-      beneficiary: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
   };
 
   supportsInterface(
-    _interfaceID: BytesLike,
+    _interfaceId: BytesLike,
     overrides?: CallOverrides
   ): Promise<boolean>;
 
-  proxyOwner(overrides?: CallOverrides): Promise<string>;
-
   name(overrides?: CallOverrides): Promise<string>;
 
+  "initialize(string,string,address)"(
+    _name: string,
+    _symbol: string,
+    _registry: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  "initialize(string,string)"(
+    _name: string,
+    _symbol: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  "initialize()"(
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  "initialize(address)"(
+    _sender: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  updateManager(
+    arg0: string,
+    arg1: string,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
   getApproved(
-    assetId: BigNumberish,
+    _tokenId: BigNumberish,
     overrides?: CallOverrides
   ): Promise<string>;
 
   approve(
-    operator: string,
-    assetId: BigNumberish,
+    _to: string,
+    _tokenId: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  ownerOfLand(
-    x: BigNumberish,
-    y: BigNumberish,
+  landIdEstate(
+    arg0: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  onERC721Received(
+    _operator: string,
+    _from: string,
+    _tokenId: BigNumberish,
+    _data: BytesLike,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  getFingerprint(
+    estateId: BigNumberish,
     overrides?: CallOverrides
   ): Promise<string>;
 
-  setLatestToNow(
-    user: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
   totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
-  assignNewParcel(
-    x: BigNumberish,
-    y: BigNumberish,
-    beneficiary: string,
+  unregisterBalance(
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  ownerOfLandMany(
-    x: BigNumberish[],
-    y: BigNumberish[],
-    overrides?: CallOverrides
-  ): Promise<string[]>;
-
-  latestPing(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-  updateManyLandData(
-    x: BigNumberish[],
-    y: BigNumberish[],
-    data: string,
+  setLandUpdateOperator(
+    estateId: BigNumberish,
+    landId: BigNumberish,
+    operator: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   transferFrom(
-    from: string,
-    to: string,
-    assetId: BigNumberish,
+    _from: string,
+    _to: string,
+    _tokenId: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  isAuthorized(
-    operator: string,
-    assetId: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
-
-  authorizedDeploy(arg0: string, overrides?: CallOverrides): Promise<boolean>;
+  updateLandData(
+    estateId: BigNumberish,
+    landId: BigNumberish,
+    data: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
 
   tokenOfOwnerByIndex(
-    owner: string,
-    index: BigNumberish,
+    _owner: string,
+    _index: BigNumberish,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
-  decimals(overrides?: CallOverrides): Promise<BigNumber>;
+  estateLandBalance(overrides?: CallOverrides): Promise<string>;
 
-  authorizeDeploy(
-    beneficiary: string,
+  estateLandIds(
+    arg0: BigNumberish,
+    arg1: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  setManyLandUpdateOperator(
+    _estateId: BigNumberish,
+    _landIds: BigNumberish[],
+    _operator: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  transferLand(
-    x: BigNumberish,
-    y: BigNumberish,
-    to: string,
+  transferManyLands(
+    estateId: BigNumberish,
+    landIds: BigNumberish[],
+    destinatary: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  updateManyLandData(
+    estateId: BigNumberish,
+    landIds: BigNumberish[],
+    data: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   "safeTransferFrom(address,address,uint256)"(
-    from: string,
-    to: string,
-    assetId: BigNumberish,
+    _from: string,
+    _to: string,
+    _tokenId: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   "safeTransferFrom(address,address,uint256,bytes)"(
-    from: string,
-    to: string,
-    assetId: BigNumberish,
-    userData: BytesLike,
+    _from: string,
+    _to: string,
+    _tokenId: BigNumberish,
+    _data: BytesLike,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  initialize(
-    arg0: BytesLike,
+  setEstateLandBalanceToken(
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  landData(
-    x: BigNumberish,
-    y: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  exists(_tokenId: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
 
-  transferManyLand(
-    x: BigNumberish[],
-    y: BigNumberish[],
-    to: string,
+  tokenByIndex(
+    _index: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  setLANDRegistry(
+    _registry: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  "exists(uint256)"(
-    assetId: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
-
-  "exists(int256,int256)"(
-    x: BigNumberish,
-    y: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
-
-  tokensOf(owner: string, overrides?: CallOverrides): Promise<BigNumber[]>;
+  updateMetadata(
+    estateId: BigNumberish,
+    metadata: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
 
   ping(
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  ownerOf(assetId: BigNumberish, overrides?: CallOverrides): Promise<string>;
+  registeredBalance(arg0: string, overrides?: CallOverrides): Promise<boolean>;
 
-  GET_METADATA(overrides?: CallOverrides): Promise<string>;
+  ownerOf(_tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
   isUpdateAuthorized(
     operator: string,
-    assetId: BigNumberish,
+    estateId: BigNumberish,
     overrides?: CallOverrides
   ): Promise<boolean>;
 
-  tokenMetadata(
-    assetId: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<string>;
+  balanceOf(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-  encodeTokenId(
-    x: BigNumberish,
-    y: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
-
-  balanceOf(owner: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-  currentContract(overrides?: CallOverrides): Promise<string>;
-
-  description(overrides?: CallOverrides): Promise<string>;
-
-  decodeTokenId(
-    value: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<[BigNumber, BigNumber]>;
-
-  assignMultipleParcels(
-    x: BigNumberish[],
-    y: BigNumberish[],
-    beneficiary: string,
+  setManyUpdateOperator(
+    _estateIds: BigNumberish[],
+    _operator: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  createEstateWithMetadata(
-    x: BigNumberish[],
-    y: BigNumberish[],
-    beneficiary: string,
-    metadata: string,
+  "safeTransferManyFrom(address,address,uint256[])"(
+    from: string,
+    to: string,
+    estateIds: BigNumberish[],
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  landOf(
-    owner: string,
-    overrides?: CallOverrides
-  ): Promise<[BigNumber[], BigNumber[]]>;
+  "safeTransferManyFrom(address,address,uint256[],bytes)"(
+    from: string,
+    to: string,
+    estateIds: BigNumberish[],
+    data: BytesLike,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  registry(overrides?: CallOverrides): Promise<string>;
 
   owner(overrides?: CallOverrides): Promise<string>;
 
-  setEstateRegistry(
-    registry: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  verifyFingerprint(
+    estateId: BigNumberish,
+    fingerprint: BytesLike,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
 
   symbol(overrides?: CallOverrides): Promise<string>;
 
@@ -1170,260 +1298,289 @@ export interface EstateRegistry extends BaseContract {
     overrides?: CallOverrides
   ): Promise<string>;
 
-  setApprovalForAll(
-    operator: string,
-    authorized: boolean,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  setUpdateOperator(
-    assetId: BigNumberish,
-    operator: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  createEstate(
-    x: BigNumberish[],
-    y: BigNumberish[],
-    beneficiary: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  updateLandData(
-    x: BigNumberish,
-    y: BigNumberish,
-    data: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  estateRegistry(overrides?: CallOverrides): Promise<string>;
-
-  isApprovedForAll(
-    assetHolder: string,
-    operator: string,
+  estateLandIndex(
+    arg0: BigNumberish,
+    arg1: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<boolean>;
+  ): Promise<BigNumber>;
 
-  getApprovedAddress(
-    assetId: BigNumberish,
+  setApprovalForAll(
+    _to: string,
+    _approved: boolean,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  transferLand(
+    estateId: BigNumberish,
+    landId: BigNumberish,
+    destinatary: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  getMetadata(
+    estateId: BigNumberish,
     overrides?: CallOverrides
   ): Promise<string>;
 
+  setUpdateOperator(
+    estateId: BigNumberish,
+    operator: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  getLandEstateId(
+    landId: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
+  isMigrated(
+    contractName: string,
+    migrationId: string,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
+  registerBalance(
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  tokenURI(_tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
+
+  mint(
+    to: string,
+    metadata: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  getLANDsSize(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+  isApprovedForAll(
+    _owner: string,
+    _operator: string,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
+  setUpdateManager(
+    _owner: string,
+    _operator: string,
+    _approved: boolean,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
   transferOwnership(
-    _newOwner: string,
+    newOwner: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  transferManyLandToEstate(
-    x: BigNumberish[],
-    y: BigNumberish[],
+  getEstateSize(
     estateId: BigNumberish,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  transferLandToEstate(
-    x: BigNumberish,
-    y: BigNumberish,
-    estateId: BigNumberish,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  forbidDeploy(
-    beneficiary: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
 
   callStatic: {
     supportsInterface(
-      _interfaceID: BytesLike,
+      _interfaceId: BytesLike,
       overrides?: CallOverrides
     ): Promise<boolean>;
 
-    proxyOwner(overrides?: CallOverrides): Promise<string>;
-
     name(overrides?: CallOverrides): Promise<string>;
 
+    "initialize(string,string,address)"(
+      _name: string,
+      _symbol: string,
+      _registry: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "initialize(string,string)"(
+      _name: string,
+      _symbol: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "initialize()"(overrides?: CallOverrides): Promise<void>;
+
+    "initialize(address)"(
+      _sender: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    updateManager(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
     getApproved(
-      assetId: BigNumberish,
+      _tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<string>;
 
     approve(
-      operator: string,
-      assetId: BigNumberish,
+      _to: string,
+      _tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    ownerOfLand(
-      x: BigNumberish,
-      y: BigNumberish,
+    landIdEstate(
+      arg0: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    onERC721Received(
+      _operator: string,
+      _from: string,
+      _tokenId: BigNumberish,
+      _data: BytesLike,
       overrides?: CallOverrides
     ): Promise<string>;
 
-    setLatestToNow(user: string, overrides?: CallOverrides): Promise<void>;
+    getFingerprint(
+      estateId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<string>;
 
     totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
-    assignNewParcel(
-      x: BigNumberish,
-      y: BigNumberish,
-      beneficiary: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    unregisterBalance(overrides?: CallOverrides): Promise<void>;
 
-    ownerOfLandMany(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      overrides?: CallOverrides
-    ): Promise<string[]>;
-
-    latestPing(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    updateManyLandData(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      data: string,
+    setLandUpdateOperator(
+      estateId: BigNumberish,
+      landId: BigNumberish,
+      operator: string,
       overrides?: CallOverrides
     ): Promise<void>;
 
     transferFrom(
-      from: string,
-      to: string,
-      assetId: BigNumberish,
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    isAuthorized(
-      operator: string,
-      assetId: BigNumberish,
+    updateLandData(
+      estateId: BigNumberish,
+      landId: BigNumberish,
+      data: string,
       overrides?: CallOverrides
-    ): Promise<boolean>;
-
-    authorizedDeploy(arg0: string, overrides?: CallOverrides): Promise<boolean>;
+    ): Promise<void>;
 
     tokenOfOwnerByIndex(
-      owner: string,
-      index: BigNumberish,
+      _owner: string,
+      _index: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    decimals(overrides?: CallOverrides): Promise<BigNumber>;
+    estateLandBalance(overrides?: CallOverrides): Promise<string>;
 
-    authorizeDeploy(
-      beneficiary: string,
+    estateLandIds(
+      arg0: BigNumberish,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    setManyLandUpdateOperator(
+      _estateId: BigNumberish,
+      _landIds: BigNumberish[],
+      _operator: string,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    transferLand(
-      x: BigNumberish,
-      y: BigNumberish,
-      to: string,
+    transferManyLands(
+      estateId: BigNumberish,
+      landIds: BigNumberish[],
+      destinatary: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    updateManyLandData(
+      estateId: BigNumberish,
+      landIds: BigNumberish[],
+      data: string,
       overrides?: CallOverrides
     ): Promise<void>;
 
     "safeTransferFrom(address,address,uint256)"(
-      from: string,
-      to: string,
-      assetId: BigNumberish,
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
     "safeTransferFrom(address,address,uint256,bytes)"(
-      from: string,
-      to: string,
-      assetId: BigNumberish,
-      userData: BytesLike,
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      _data: BytesLike,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    initialize(arg0: BytesLike, overrides?: CallOverrides): Promise<void>;
+    setEstateLandBalanceToken(overrides?: CallOverrides): Promise<void>;
 
-    landData(
-      x: BigNumberish,
-      y: BigNumberish,
+    exists(_tokenId: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
+
+    tokenByIndex(
+      _index: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<string>;
+    ): Promise<BigNumber>;
 
-    transferManyLand(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      to: string,
+    setLANDRegistry(
+      _registry: string,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "exists(uint256)"(
-      assetId: BigNumberish,
+    updateMetadata(
+      estateId: BigNumberish,
+      metadata: string,
       overrides?: CallOverrides
-    ): Promise<boolean>;
-
-    "exists(int256,int256)"(
-      x: BigNumberish,
-      y: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
-
-    tokensOf(owner: string, overrides?: CallOverrides): Promise<BigNumber[]>;
+    ): Promise<void>;
 
     ping(overrides?: CallOverrides): Promise<void>;
 
-    ownerOf(assetId: BigNumberish, overrides?: CallOverrides): Promise<string>;
-
-    GET_METADATA(overrides?: CallOverrides): Promise<string>;
-
-    isUpdateAuthorized(
-      operator: string,
-      assetId: BigNumberish,
+    registeredBalance(
+      arg0: string,
       overrides?: CallOverrides
     ): Promise<boolean>;
 
-    tokenMetadata(
-      assetId: BigNumberish,
+    ownerOf(_tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
+
+    isUpdateAuthorized(
+      operator: string,
+      estateId: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<string>;
+    ): Promise<boolean>;
 
-    encodeTokenId(
-      x: BigNumberish,
-      y: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    balanceOf(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-    balanceOf(owner: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    currentContract(overrides?: CallOverrides): Promise<string>;
-
-    description(overrides?: CallOverrides): Promise<string>;
-
-    decodeTokenId(
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber, BigNumber]>;
-
-    assignMultipleParcels(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      beneficiary: string,
+    setManyUpdateOperator(
+      _estateIds: BigNumberish[],
+      _operator: string,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    createEstateWithMetadata(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      beneficiary: string,
-      metadata: string,
+    "safeTransferManyFrom(address,address,uint256[])"(
+      from: string,
+      to: string,
+      estateIds: BigNumberish[],
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<void>;
 
-    landOf(
-      owner: string,
+    "safeTransferManyFrom(address,address,uint256[],bytes)"(
+      from: string,
+      to: string,
+      estateIds: BigNumberish[],
+      data: BytesLike,
       overrides?: CallOverrides
-    ): Promise<[BigNumber[], BigNumber[]]>;
+    ): Promise<void>;
+
+    registry(overrides?: CallOverrides): Promise<string>;
 
     owner(overrides?: CallOverrides): Promise<string>;
 
-    setEstateRegistry(
-      registry: string,
+    verifyFingerprint(
+      estateId: BigNumberish,
+      fingerprint: BytesLike,
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<boolean>;
 
     symbol(overrides?: CallOverrides): Promise<string>;
 
@@ -1432,346 +1589,434 @@ export interface EstateRegistry extends BaseContract {
       overrides?: CallOverrides
     ): Promise<string>;
 
-    setApprovalForAll(
-      operator: string,
-      authorized: boolean,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    setUpdateOperator(
-      assetId: BigNumberish,
-      operator: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    createEstate(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      beneficiary: string,
+    estateLandIndex(
+      arg0: BigNumberish,
+      arg1: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    updateLandData(
-      x: BigNumberish,
-      y: BigNumberish,
-      data: string,
+    setApprovalForAll(
+      _to: string,
+      _approved: boolean,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    estateRegistry(overrides?: CallOverrides): Promise<string>;
-
-    isApprovedForAll(
-      assetHolder: string,
-      operator: string,
+    transferLand(
+      estateId: BigNumberish,
+      landId: BigNumberish,
+      destinatary: string,
       overrides?: CallOverrides
-    ): Promise<boolean>;
+    ): Promise<void>;
 
-    getApprovedAddress(
-      assetId: BigNumberish,
+    getMetadata(
+      estateId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<string>;
 
+    setUpdateOperator(
+      estateId: BigNumberish,
+      operator: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    getLandEstateId(
+      landId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    isMigrated(
+      contractName: string,
+      migrationId: string,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
+    registerBalance(overrides?: CallOverrides): Promise<void>;
+
+    tokenURI(
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<string>;
+
+    mint(
+      to: string,
+      metadata: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    getLANDsSize(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    isApprovedForAll(
+      _owner: string,
+      _operator: string,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
+    setUpdateManager(
+      _owner: string,
+      _operator: string,
+      _approved: boolean,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
     transferOwnership(
-      _newOwner: string,
+      newOwner: string,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    transferManyLandToEstate(
-      x: BigNumberish[],
-      y: BigNumberish[],
+    getEstateSize(
       estateId: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<void>;
-
-    transferLandToEstate(
-      x: BigNumberish,
-      y: BigNumberish,
-      estateId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    forbidDeploy(beneficiary: string, overrides?: CallOverrides): Promise<void>;
+    ): Promise<BigNumber>;
   };
 
   filters: {
-    "EstateRegistrySet(address)"(
-      registry?: string | null
-    ): EstateRegistrySetEventFilter;
-    EstateRegistrySet(registry?: string | null): EstateRegistrySetEventFilter;
+    "OwnershipTransferred(address,address)"(
+      previousOwner?: string | null,
+      newOwner?: string | null
+    ): OwnershipTransferredEventFilter;
+    OwnershipTransferred(
+      previousOwner?: string | null,
+      newOwner?: string | null
+    ): OwnershipTransferredEventFilter;
+
+    "Transfer(address,address,uint256)"(
+      _from?: string | null,
+      _to?: string | null,
+      _tokenId?: BigNumberish | null
+    ): TransferEventFilter;
+    Transfer(
+      _from?: string | null,
+      _to?: string | null,
+      _tokenId?: BigNumberish | null
+    ): TransferEventFilter;
+
+    "Approval(address,address,uint256)"(
+      _owner?: string | null,
+      _approved?: string | null,
+      _tokenId?: BigNumberish | null
+    ): ApprovalEventFilter;
+    Approval(
+      _owner?: string | null,
+      _approved?: string | null,
+      _tokenId?: BigNumberish | null
+    ): ApprovalEventFilter;
+
+    "ApprovalForAll(address,address,bool)"(
+      _owner?: string | null,
+      _operator?: string | null,
+      _approved?: null
+    ): ApprovalForAllEventFilter;
+    ApprovalForAll(
+      _owner?: string | null,
+      _operator?: string | null,
+      _approved?: null
+    ): ApprovalForAllEventFilter;
+
+    "CreateEstate(address,uint256,string)"(
+      _owner?: string | null,
+      _estateId?: BigNumberish | null,
+      _data?: null
+    ): CreateEstateEventFilter;
+    CreateEstate(
+      _owner?: string | null,
+      _estateId?: BigNumberish | null,
+      _data?: null
+    ): CreateEstateEventFilter;
+
+    "AddLand(uint256,uint256)"(
+      _estateId?: BigNumberish | null,
+      _landId?: BigNumberish | null
+    ): AddLandEventFilter;
+    AddLand(
+      _estateId?: BigNumberish | null,
+      _landId?: BigNumberish | null
+    ): AddLandEventFilter;
+
+    "RemoveLand(uint256,uint256,address)"(
+      _estateId?: BigNumberish | null,
+      _landId?: BigNumberish | null,
+      _destinatary?: string | null
+    ): RemoveLandEventFilter;
+    RemoveLand(
+      _estateId?: BigNumberish | null,
+      _landId?: BigNumberish | null,
+      _destinatary?: string | null
+    ): RemoveLandEventFilter;
 
     "Update(uint256,address,address,string)"(
-      assetId?: BigNumberish | null,
-      holder?: string | null,
-      operator?: string | null,
-      data?: null
+      _assetId?: BigNumberish | null,
+      _holder?: string | null,
+      _operator?: string | null,
+      _data?: null
     ): UpdateEventFilter;
     Update(
-      assetId?: BigNumberish | null,
-      holder?: string | null,
-      operator?: string | null,
-      data?: null
+      _assetId?: BigNumberish | null,
+      _holder?: string | null,
+      _operator?: string | null,
+      _data?: null
     ): UpdateEventFilter;
 
     "UpdateOperator(uint256,address)"(
-      assetId?: BigNumberish | null,
-      operator?: string | null
+      _estateId?: BigNumberish | null,
+      _operator?: string | null
     ): UpdateOperatorEventFilter;
     UpdateOperator(
-      assetId?: BigNumberish | null,
-      operator?: string | null
+      _estateId?: BigNumberish | null,
+      _operator?: string | null
     ): UpdateOperatorEventFilter;
 
-    "Transfer(address,address,uint256,address,bytes)"(
-      from?: string | null,
-      to?: string | null,
-      assetId?: BigNumberish | null,
-      operator?: null,
-      userData?: null
-    ): Transfer_address_address_uint256_address_bytes_EventFilter;
-    "Transfer(address,address,uint256)"(
-      from?: string | null,
-      to?: string | null,
-      assetId?: BigNumberish | null
-    ): Transfer_address_address_uint256_EventFilter;
-    "Transfer(address,address,uint256,address,bytes,bytes)"(
-      from?: string | null,
-      to?: string | null,
-      assetId?: BigNumberish | null,
-      operator?: null,
-      userData?: null,
-      operatorData?: null
-    ): Transfer_address_address_uint256_address_bytes_bytes_EventFilter;
+    "UpdateManager(address,address,address,bool)"(
+      _owner?: string | null,
+      _operator?: string | null,
+      _caller?: string | null,
+      _approved?: null
+    ): UpdateManagerEventFilter;
+    UpdateManager(
+      _owner?: string | null,
+      _operator?: string | null,
+      _caller?: string | null,
+      _approved?: null
+    ): UpdateManagerEventFilter;
 
-    "ApprovalForAll(address,address,bool)"(
-      operator?: string | null,
-      holder?: string | null,
-      authorized?: null
-    ): ApprovalForAllEventFilter;
-    ApprovalForAll(
-      operator?: string | null,
-      holder?: string | null,
-      authorized?: null
-    ): ApprovalForAllEventFilter;
+    "SetLANDRegistry(address)"(
+      _registry?: string | null
+    ): SetLANDRegistryEventFilter;
+    SetLANDRegistry(_registry?: string | null): SetLANDRegistryEventFilter;
 
-    "Approval(address,address,uint256)"(
-      owner?: string | null,
-      operator?: string | null,
-      assetId?: BigNumberish | null
-    ): ApprovalEventFilter;
-    Approval(
-      owner?: string | null,
-      operator?: string | null,
-      assetId?: BigNumberish | null
-    ): ApprovalEventFilter;
+    "SetEstateLandBalanceToken(address,address)"(
+      _previousEstateLandBalance?: string | null,
+      _newEstateLandBalance?: string | null
+    ): SetEstateLandBalanceTokenEventFilter;
+    SetEstateLandBalanceToken(
+      _previousEstateLandBalance?: string | null,
+      _newEstateLandBalance?: string | null
+    ): SetEstateLandBalanceTokenEventFilter;
 
-    "OwnerUpdate(address,address)"(
-      _prevOwner?: null,
-      _newOwner?: null
-    ): OwnerUpdateEventFilter;
-    OwnerUpdate(_prevOwner?: null, _newOwner?: null): OwnerUpdateEventFilter;
+    "Migrated(string,string)"(
+      contractName?: null,
+      migrationId?: null
+    ): MigratedEventFilter;
+    Migrated(contractName?: null, migrationId?: null): MigratedEventFilter;
   };
 
   estimateGas: {
     supportsInterface(
-      _interfaceID: BytesLike,
+      _interfaceId: BytesLike,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    proxyOwner(overrides?: CallOverrides): Promise<BigNumber>;
-
     name(overrides?: CallOverrides): Promise<BigNumber>;
 
+    "initialize(string,string,address)"(
+      _name: string,
+      _symbol: string,
+      _registry: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    "initialize(string,string)"(
+      _name: string,
+      _symbol: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    "initialize()"(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    "initialize(address)"(
+      _sender: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    updateManager(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     getApproved(
-      assetId: BigNumberish,
+      _tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     approve(
-      operator: string,
-      assetId: BigNumberish,
+      _to: string,
+      _tokenId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    ownerOfLand(
-      x: BigNumberish,
-      y: BigNumberish,
+    landIdEstate(
+      arg0: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    setLatestToNow(
-      user: string,
+    onERC721Received(
+      _operator: string,
+      _from: string,
+      _tokenId: BigNumberish,
+      _data: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    getFingerprint(
+      estateId: BigNumberish,
+      overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
-    assignNewParcel(
-      x: BigNumberish,
-      y: BigNumberish,
-      beneficiary: string,
+    unregisterBalance(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    ownerOfLandMany(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    latestPing(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    updateManyLandData(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      data: string,
+    setLandUpdateOperator(
+      estateId: BigNumberish,
+      landId: BigNumberish,
+      operator: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     transferFrom(
-      from: string,
-      to: string,
-      assetId: BigNumberish,
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    isAuthorized(
-      operator: string,
-      assetId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    authorizedDeploy(
-      arg0: string,
-      overrides?: CallOverrides
+    updateLandData(
+      estateId: BigNumberish,
+      landId: BigNumberish,
+      data: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     tokenOfOwnerByIndex(
-      owner: string,
-      index: BigNumberish,
+      _owner: string,
+      _index: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    decimals(overrides?: CallOverrides): Promise<BigNumber>;
+    estateLandBalance(overrides?: CallOverrides): Promise<BigNumber>;
 
-    authorizeDeploy(
-      beneficiary: string,
+    estateLandIds(
+      arg0: BigNumberish,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    setManyLandUpdateOperator(
+      _estateId: BigNumberish,
+      _landIds: BigNumberish[],
+      _operator: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    transferLand(
-      x: BigNumberish,
-      y: BigNumberish,
-      to: string,
+    transferManyLands(
+      estateId: BigNumberish,
+      landIds: BigNumberish[],
+      destinatary: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    updateManyLandData(
+      estateId: BigNumberish,
+      landIds: BigNumberish[],
+      data: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     "safeTransferFrom(address,address,uint256)"(
-      from: string,
-      to: string,
-      assetId: BigNumberish,
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     "safeTransferFrom(address,address,uint256,bytes)"(
-      from: string,
-      to: string,
-      assetId: BigNumberish,
-      userData: BytesLike,
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      _data: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    initialize(
-      arg0: BytesLike,
+    setEstateLandBalanceToken(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    landData(
-      x: BigNumberish,
-      y: BigNumberish,
+    exists(
+      _tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    transferManyLand(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      to: string,
+    tokenByIndex(
+      _index: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    setLANDRegistry(
+      _registry: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    "exists(uint256)"(
-      assetId: BigNumberish,
-      overrides?: CallOverrides
+    updateMetadata(
+      estateId: BigNumberish,
+      metadata: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
-
-    "exists(int256,int256)"(
-      x: BigNumberish,
-      y: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    tokensOf(owner: string, overrides?: CallOverrides): Promise<BigNumber>;
 
     ping(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    ownerOf(
-      assetId: BigNumberish,
+    registeredBalance(
+      arg0: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    GET_METADATA(overrides?: CallOverrides): Promise<BigNumber>;
+    ownerOf(
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     isUpdateAuthorized(
       operator: string,
-      assetId: BigNumberish,
+      estateId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    tokenMetadata(
-      assetId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    balanceOf(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-    encodeTokenId(
-      x: BigNumberish,
-      y: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    balanceOf(owner: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    currentContract(overrides?: CallOverrides): Promise<BigNumber>;
-
-    description(overrides?: CallOverrides): Promise<BigNumber>;
-
-    decodeTokenId(
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    assignMultipleParcels(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      beneficiary: string,
+    setManyUpdateOperator(
+      _estateIds: BigNumberish[],
+      _operator: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    createEstateWithMetadata(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      beneficiary: string,
-      metadata: string,
+    "safeTransferManyFrom(address,address,uint256[])"(
+      from: string,
+      to: string,
+      estateIds: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    landOf(owner: string, overrides?: CallOverrides): Promise<BigNumber>;
+    "safeTransferManyFrom(address,address,uint256[],bytes)"(
+      from: string,
+      to: string,
+      estateIds: BigNumberish[],
+      data: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    registry(overrides?: CallOverrides): Promise<BigNumber>;
 
     owner(overrides?: CallOverrides): Promise<BigNumber>;
 
-    setEstateRegistry(
-      registry: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
+    verifyFingerprint(
+      estateId: BigNumberish,
+      fingerprint: BytesLike,
+      overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     symbol(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1781,283 +2026,309 @@ export interface EstateRegistry extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    estateLandIndex(
+      arg0: BigNumberish,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     setApprovalForAll(
-      operator: string,
-      authorized: boolean,
+      _to: string,
+      _approved: boolean,
       overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    transferLand(
+      estateId: BigNumberish,
+      landId: BigNumberish,
+      destinatary: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    getMetadata(
+      estateId: BigNumberish,
+      overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     setUpdateOperator(
-      assetId: BigNumberish,
+      estateId: BigNumberish,
       operator: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    createEstate(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      beneficiary: string,
+    getLandEstateId(
+      landId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    isMigrated(
+      contractName: string,
+      migrationId: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    registerBalance(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    updateLandData(
-      x: BigNumberish,
-      y: BigNumberish,
-      data: string,
+    tokenURI(
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    mint(
+      to: string,
+      metadata: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    estateRegistry(overrides?: CallOverrides): Promise<BigNumber>;
+    getLANDsSize(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
 
     isApprovedForAll(
-      assetHolder: string,
-      operator: string,
+      _owner: string,
+      _operator: string,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    getApprovedAddress(
-      assetId: BigNumberish,
-      overrides?: CallOverrides
+    setUpdateManager(
+      _owner: string,
+      _operator: string,
+      _approved: boolean,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     transferOwnership(
-      _newOwner: string,
+      newOwner: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    transferManyLandToEstate(
-      x: BigNumberish[],
-      y: BigNumberish[],
+    getEstateSize(
       estateId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
-    transferLandToEstate(
-      x: BigNumberish,
-      y: BigNumberish,
-      estateId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
-    forbidDeploy(
-      beneficiary: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
+      overrides?: CallOverrides
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
     supportsInterface(
-      _interfaceID: BytesLike,
+      _interfaceId: BytesLike,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    proxyOwner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
     name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
+    "initialize(string,string,address)"(
+      _name: string,
+      _symbol: string,
+      _registry: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "initialize(string,string)"(
+      _name: string,
+      _symbol: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "initialize()"(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    "initialize(address)"(
+      _sender: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    updateManager(
+      arg0: string,
+      arg1: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     getApproved(
-      assetId: BigNumberish,
+      _tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     approve(
-      operator: string,
-      assetId: BigNumberish,
+      _to: string,
+      _tokenId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    ownerOfLand(
-      x: BigNumberish,
-      y: BigNumberish,
+    landIdEstate(
+      arg0: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    setLatestToNow(
-      user: string,
+    onERC721Received(
+      _operator: string,
+      _from: string,
+      _tokenId: BigNumberish,
+      _data: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    getFingerprint(
+      estateId: BigNumberish,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     totalSupply(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    assignNewParcel(
-      x: BigNumberish,
-      y: BigNumberish,
-      beneficiary: string,
+    unregisterBalance(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    ownerOfLandMany(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    latestPing(
-      arg0: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    updateManyLandData(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      data: string,
+    setLandUpdateOperator(
+      estateId: BigNumberish,
+      landId: BigNumberish,
+      operator: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     transferFrom(
-      from: string,
-      to: string,
-      assetId: BigNumberish,
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    isAuthorized(
-      operator: string,
-      assetId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    authorizedDeploy(
-      arg0: string,
-      overrides?: CallOverrides
+    updateLandData(
+      estateId: BigNumberish,
+      landId: BigNumberish,
+      data: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     tokenOfOwnerByIndex(
-      owner: string,
-      index: BigNumberish,
+      _owner: string,
+      _index: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    decimals(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    estateLandBalance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    authorizeDeploy(
-      beneficiary: string,
+    estateLandIds(
+      arg0: BigNumberish,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    setManyLandUpdateOperator(
+      _estateId: BigNumberish,
+      _landIds: BigNumberish[],
+      _operator: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    transferLand(
-      x: BigNumberish,
-      y: BigNumberish,
-      to: string,
+    transferManyLands(
+      estateId: BigNumberish,
+      landIds: BigNumberish[],
+      destinatary: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    updateManyLandData(
+      estateId: BigNumberish,
+      landIds: BigNumberish[],
+      data: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     "safeTransferFrom(address,address,uint256)"(
-      from: string,
-      to: string,
-      assetId: BigNumberish,
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     "safeTransferFrom(address,address,uint256,bytes)"(
-      from: string,
-      to: string,
-      assetId: BigNumberish,
-      userData: BytesLike,
+      _from: string,
+      _to: string,
+      _tokenId: BigNumberish,
+      _data: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    initialize(
-      arg0: BytesLike,
+    setEstateLandBalanceToken(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    landData(
-      x: BigNumberish,
-      y: BigNumberish,
+    exists(
+      _tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    transferManyLand(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      to: string,
+    tokenByIndex(
+      _index: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    setLANDRegistry(
+      _registry: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    "exists(uint256)"(
-      assetId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    "exists(int256,int256)"(
-      x: BigNumberish,
-      y: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    tokensOf(
-      owner: string,
-      overrides?: CallOverrides
+    updateMetadata(
+      estateId: BigNumberish,
+      metadata: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     ping(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    ownerOf(
-      assetId: BigNumberish,
+    registeredBalance(
+      arg0: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    GET_METADATA(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    ownerOf(
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     isUpdateAuthorized(
       operator: string,
-      assetId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    tokenMetadata(
-      assetId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    encodeTokenId(
-      x: BigNumberish,
-      y: BigNumberish,
+      estateId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     balanceOf(
-      owner: string,
+      _owner: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    currentContract(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    description(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    decodeTokenId(
-      value: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    assignMultipleParcels(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      beneficiary: string,
+    setManyUpdateOperator(
+      _estateIds: BigNumberish[],
+      _operator: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    createEstateWithMetadata(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      beneficiary: string,
-      metadata: string,
+    "safeTransferManyFrom(address,address,uint256[])"(
+      from: string,
+      to: string,
+      estateIds: BigNumberish[],
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    landOf(
-      owner: string,
-      overrides?: CallOverrides
+    "safeTransferManyFrom(address,address,uint256[],bytes)"(
+      from: string,
+      to: string,
+      estateIds: BigNumberish[],
+      data: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
+
+    registry(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    setEstateRegistry(
-      registry: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
+    verifyFingerprint(
+      estateId: BigNumberish,
+      fingerprint: BytesLike,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -2067,67 +2338,88 @@ export interface EstateRegistry extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    estateLandIndex(
+      arg0: BigNumberish,
+      arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     setApprovalForAll(
-      operator: string,
-      authorized: boolean,
+      _to: string,
+      _approved: boolean,
       overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    transferLand(
+      estateId: BigNumberish,
+      landId: BigNumberish,
+      destinatary: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    getMetadata(
+      estateId: BigNumberish,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     setUpdateOperator(
-      assetId: BigNumberish,
+      estateId: BigNumberish,
       operator: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    createEstate(
-      x: BigNumberish[],
-      y: BigNumberish[],
-      beneficiary: string,
+    getLandEstateId(
+      landId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    isMigrated(
+      contractName: string,
+      migrationId: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    registerBalance(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    updateLandData(
-      x: BigNumberish,
-      y: BigNumberish,
-      data: string,
+    tokenURI(
+      _tokenId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    mint(
+      to: string,
+      metadata: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    estateRegistry(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    getLANDsSize(
+      _owner: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     isApprovedForAll(
-      assetHolder: string,
-      operator: string,
+      _owner: string,
+      _operator: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    getApprovedAddress(
-      assetId: BigNumberish,
-      overrides?: CallOverrides
+    setUpdateManager(
+      _owner: string,
+      _operator: string,
+      _approved: boolean,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     transferOwnership(
-      _newOwner: string,
+      newOwner: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    transferManyLandToEstate(
-      x: BigNumberish[],
-      y: BigNumberish[],
+    getEstateSize(
       estateId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    transferLandToEstate(
-      x: BigNumberish,
-      y: BigNumberish,
-      estateId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    forbidDeploy(
-      beneficiary: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };
 }

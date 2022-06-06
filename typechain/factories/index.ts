@@ -2,7 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 export { Bid__factory } from "./Bid__factory";
-export { BidV2__factory } from "./BidV2__factory";
 export { EstateRegistry__factory } from "./EstateRegistry__factory";
 export { Marketplace__factory } from "./Marketplace__factory";
-export { MarketplaceV2__factory } from "./MarketplaceV2__factory";

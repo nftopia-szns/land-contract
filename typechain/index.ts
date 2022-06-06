@@ -2,13 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { Bid } from "./Bid";
-export type { BidV2 } from "./BidV2";
 export type { EstateRegistry } from "./EstateRegistry";
 export type { Marketplace } from "./Marketplace";
-export type { MarketplaceV2 } from "./MarketplaceV2";
 export * as factories from "./factories";
 export { Bid__factory } from "./factories/Bid__factory";
-export { BidV2__factory } from "./factories/BidV2__factory";
 export { EstateRegistry__factory } from "./factories/EstateRegistry__factory";
 export { Marketplace__factory } from "./factories/Marketplace__factory";
-export { MarketplaceV2__factory } from "./factories/MarketplaceV2__factory";
