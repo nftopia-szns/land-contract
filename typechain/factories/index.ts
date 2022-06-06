@@ -2,3 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 export { EstateRegistry__factory } from "./EstateRegistry__factory";
+export { Marketplace__factory } from "./Marketplace__factory";
+export { MarketplaceV2__factory } from "./MarketplaceV2__factory";

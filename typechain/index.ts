@@ -2,5 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { EstateRegistry } from "./EstateRegistry";
+export type { Marketplace } from "./Marketplace";
+export type { MarketplaceV2 } from "./MarketplaceV2";
 export * as factories from "./factories";
 export { EstateRegistry__factory } from "./factories/EstateRegistry__factory";
+export { Marketplace__factory } from "./factories/Marketplace__factory";
+export { MarketplaceV2__factory } from "./factories/MarketplaceV2__factory";
