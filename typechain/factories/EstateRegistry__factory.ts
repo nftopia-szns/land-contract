@@ -14,7 +14,7 @@ const _abi = [
     constant: true,
     inputs: [
       {
-        name: "_interfaceId",
+        name: "_interfaceID",
         type: "bytes4",
       },
     ],
@@ -23,6 +23,20 @@ const _abi = [
       {
         name: "",
         type: "bool",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: "proxyOwner",
+    outputs: [
+      {
+        name: "",
+        type: "address",
       },
     ],
     payable: false,
@@ -41,28 +55,6 @@ const _abi = [
     ],
     payable: false,
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_name",
-        type: "string",
-      },
-      {
-        name: "_symbol",
-        type: "string",
-      },
-      {
-        name: "_registry",
-        type: "address",
-      },
-    ],
-    name: "initialize",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -92,7 +84,7 @@ const _abi = [
     constant: true,
     inputs: [
       {
-        name: "_tokenId",
+        name: "assetId",
         type: "uint256",
       },
     ],
@@ -111,11 +103,11 @@ const _abi = [
     constant: false,
     inputs: [
       {
-        name: "_to",
+        name: "operator",
         type: "address",
       },
       {
-        name: "_tokenId",
+        name: "assetId",
         type: "uint256",
       },
     ],
@@ -123,75 +115,6 @@ const _abi = [
     outputs: [],
     payable: false,
     stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    name: "landIdEstate",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_operator",
-        type: "address",
-      },
-      {
-        name: "_from",
-        type: "address",
-      },
-      {
-        name: "_tokenId",
-        type: "uint256",
-      },
-      {
-        name: "_data",
-        type: "bytes",
-      },
-    ],
-    name: "onERC721Received",
-    outputs: [
-      {
-        name: "",
-        type: "bytes4",
-      },
-    ],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "estateId",
-        type: "uint256",
-      },
-    ],
-    name: "getFingerprint",
-    outputs: [
-      {
-        name: "result",
-        type: "bytes32",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
     type: "function",
   },
   {
@@ -209,96 +132,82 @@ const _abi = [
     type: "function",
   },
   {
-    constant: false,
-    inputs: [],
-    name: "unregisterBalance",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
+    constant: true,
     inputs: [
       {
-        name: "estateId",
-        type: "uint256",
-      },
-      {
-        name: "landId",
-        type: "uint256",
-      },
-      {
-        name: "operator",
+        name: "",
         type: "address",
       },
     ],
-    name: "setLandUpdateOperator",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
+    name: "latestPing",
+    outputs: [
       {
-        name: "_from",
-        type: "address",
-      },
-      {
-        name: "_to",
-        type: "address",
-      },
-      {
-        name: "_tokenId",
+        name: "",
         type: "uint256",
       },
     ],
-    name: "transferFrom",
-    outputs: [],
     payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "estateId",
-        type: "uint256",
-      },
-      {
-        name: "landId",
-        type: "uint256",
-      },
-      {
-        name: "data",
-        type: "string",
-      },
-    ],
-    name: "updateLandData",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
     constant: true,
     inputs: [
       {
-        name: "_owner",
+        name: "operator",
         type: "address",
       },
       {
-        name: "_index",
+        name: "assetId",
+        type: "uint256",
+      },
+    ],
+    name: "isAuthorized",
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "authorizedDeploy",
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "owner",
+        type: "address",
+      },
+      {
+        name: "index",
         type: "uint256",
       },
     ],
     name: "tokenOfOwnerByIndex",
     outputs: [
       {
-        name: "",
+        name: "assetId",
         type: "uint256",
       },
     ],
@@ -309,30 +218,7 @@ const _abi = [
   {
     constant: true,
     inputs: [],
-    name: "estateLandBalance",
-    outputs: [
-      {
-        name: "",
-        type: "address",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    name: "estateLandIds",
+    name: "decimals",
     outputs: [
       {
         name: "",
@@ -340,88 +226,22 @@ const _abi = [
       },
     ],
     payable: false,
-    stateMutability: "view",
+    stateMutability: "pure",
     type: "function",
   },
   {
     constant: false,
     inputs: [
       {
-        name: "_estateId",
-        type: "uint256",
-      },
-      {
-        name: "_landIds",
-        type: "uint256[]",
-      },
-      {
-        name: "_operator",
-        type: "address",
-      },
-    ],
-    name: "setManyLandUpdateOperator",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "estateId",
-        type: "uint256",
-      },
-      {
-        name: "landIds",
-        type: "uint256[]",
-      },
-      {
-        name: "destinatary",
-        type: "address",
-      },
-    ],
-    name: "transferManyLands",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "estateId",
-        type: "uint256",
-      },
-      {
-        name: "landIds",
-        type: "uint256[]",
-      },
-      {
-        name: "data",
-        type: "string",
-      },
-    ],
-    name: "updateManyLandData",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_from",
+        name: "from",
         type: "address",
       },
       {
-        name: "_to",
+        name: "to",
         type: "address",
       },
       {
-        name: "_tokenId",
+        name: "assetId",
         type: "uint256",
       },
     ],
@@ -432,124 +252,18 @@ const _abi = [
     type: "function",
   },
   {
-    constant: false,
-    inputs: [],
-    name: "setEstateLandBalanceToken",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_name",
-        type: "string",
-      },
-      {
-        name: "_symbol",
-        type: "string",
-      },
-    ],
-    name: "initialize",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     constant: true,
     inputs: [
       {
-        name: "_tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "exists",
-    outputs: [
-      {
-        name: "",
-        type: "bool",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "_index",
-        type: "uint256",
-      },
-    ],
-    name: "tokenByIndex",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_registry",
+        name: "owner",
         type: "address",
       },
     ],
-    name: "setLANDRegistry",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "estateId",
-        type: "uint256",
-      },
-      {
-        name: "metadata",
-        type: "string",
-      },
-    ],
-    name: "updateMetadata",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [],
-    name: "ping",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "",
-        type: "address",
-      },
-    ],
-    name: "registeredBalance",
+    name: "tokensOf",
     outputs: [
       {
         name: "",
-        type: "bool",
+        type: "uint256[]",
       },
     ],
     payable: false,
@@ -560,7 +274,7 @@ const _abi = [
     constant: true,
     inputs: [
       {
-        name: "_tokenId",
+        name: "assetId",
         type: "uint256",
       },
     ],
@@ -577,21 +291,12 @@ const _abi = [
   },
   {
     constant: true,
-    inputs: [
-      {
-        name: "operator",
-        type: "address",
-      },
-      {
-        name: "estateId",
-        type: "uint256",
-      },
-    ],
-    name: "isUpdateAuthorized",
+    inputs: [],
+    name: "GET_METADATA",
     outputs: [
       {
         name: "",
-        type: "bool",
+        type: "bytes4",
       },
     ],
     payable: false,
@@ -602,7 +307,7 @@ const _abi = [
     constant: true,
     inputs: [
       {
-        name: "_owner",
+        name: "owner",
         type: "address",
       },
     ],
@@ -618,49 +323,9 @@ const _abi = [
     type: "function",
   },
   {
-    constant: false,
-    inputs: [
-      {
-        name: "_estateIds",
-        type: "uint256[]",
-      },
-      {
-        name: "_operator",
-        type: "address",
-      },
-    ],
-    name: "setManyUpdateOperator",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "from",
-        type: "address",
-      },
-      {
-        name: "to",
-        type: "address",
-      },
-      {
-        name: "estateIds",
-        type: "uint256[]",
-      },
-    ],
-    name: "safeTransferManyFrom",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     constant: true,
     inputs: [],
-    name: "registry",
+    name: "currentContract",
     outputs: [
       {
         name: "",
@@ -672,12 +337,17 @@ const _abi = [
     type: "function",
   },
   {
-    constant: false,
+    constant: true,
     inputs: [],
-    name: "initialize",
-    outputs: [],
+    name: "description",
+    outputs: [
+      {
+        name: "",
+        type: "string",
+      },
+    ],
     payable: false,
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -688,29 +358,6 @@ const _abi = [
       {
         name: "",
         type: "address",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "estateId",
-        type: "uint256",
-      },
-      {
-        name: "fingerprint",
-        type: "bytes",
-      },
-    ],
-    name: "verifyFingerprint",
-    outputs: [
-      {
-        name: "",
-        type: "bool",
       },
     ],
     payable: false,
@@ -751,37 +398,14 @@ const _abi = [
     type: "function",
   },
   {
-    constant: true,
-    inputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    name: "estateLandIndex",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     constant: false,
     inputs: [
       {
-        name: "_to",
+        name: "operator",
         type: "address",
       },
       {
-        name: "_approved",
+        name: "authorized",
         type: "bool",
       },
     ],
@@ -789,217 +413,6 @@ const _abi = [
     outputs: [],
     payable: false,
     stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "estateId",
-        type: "uint256",
-      },
-      {
-        name: "landId",
-        type: "uint256",
-      },
-      {
-        name: "destinatary",
-        type: "address",
-      },
-    ],
-    name: "transferLand",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "estateId",
-        type: "uint256",
-      },
-    ],
-    name: "getMetadata",
-    outputs: [
-      {
-        name: "",
-        type: "string",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "estateId",
-        type: "uint256",
-      },
-      {
-        name: "operator",
-        type: "address",
-      },
-    ],
-    name: "setUpdateOperator",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_from",
-        type: "address",
-      },
-      {
-        name: "_to",
-        type: "address",
-      },
-      {
-        name: "_tokenId",
-        type: "uint256",
-      },
-      {
-        name: "_data",
-        type: "bytes",
-      },
-    ],
-    name: "safeTransferFrom",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "landId",
-        type: "uint256",
-      },
-    ],
-    name: "getLandEstateId",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "contractName",
-        type: "string",
-      },
-      {
-        name: "migrationId",
-        type: "string",
-      },
-    ],
-    name: "isMigrated",
-    outputs: [
-      {
-        name: "",
-        type: "bool",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [],
-    name: "registerBalance",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_sender",
-        type: "address",
-      },
-    ],
-    name: "initialize",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "_tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "tokenURI",
-    outputs: [
-      {
-        name: "",
-        type: "string",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "to",
-        type: "address",
-      },
-      {
-        name: "metadata",
-        type: "string",
-      },
-    ],
-    name: "mint",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "_owner",
-        type: "address",
-      },
-    ],
-    name: "getLANDsSize",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
     type: "function",
   },
   {
@@ -1014,15 +427,15 @@ const _abi = [
         type: "address",
       },
       {
-        name: "estateIds",
-        type: "uint256[]",
+        name: "assetId",
+        type: "uint256",
       },
       {
-        name: "data",
+        name: "userData",
         type: "bytes",
       },
     ],
-    name: "safeTransferManyFrom",
+    name: "safeTransferFrom",
     outputs: [],
     payable: false,
     stateMutability: "nonpayable",
@@ -1030,13 +443,27 @@ const _abi = [
   },
   {
     constant: true,
+    inputs: [],
+    name: "estateRegistry",
+    outputs: [
+      {
+        name: "",
+        type: "address",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
     inputs: [
       {
-        name: "_owner",
+        name: "assetHolder",
         type: "address",
       },
       {
-        name: "_operator",
+        name: "operator",
         type: "address",
       },
     ],
@@ -1052,32 +479,29 @@ const _abi = [
     type: "function",
   },
   {
-    constant: false,
+    constant: true,
     inputs: [
       {
-        name: "_owner",
-        type: "address",
-      },
-      {
-        name: "_operator",
-        type: "address",
-      },
-      {
-        name: "_approved",
-        type: "bool",
+        name: "assetId",
+        type: "uint256",
       },
     ],
-    name: "setUpdateManager",
-    outputs: [],
+    name: "getApprovedAddress",
+    outputs: [
+      {
+        name: "",
+        type: "address",
+      },
+    ],
     payable: false,
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
     constant: false,
     inputs: [
       {
-        name: "newOwner",
+        name: "_newOwner",
         type: "address",
       },
     ],
@@ -1088,39 +512,15 @@ const _abi = [
     type: "function",
   },
   {
-    constant: true,
-    inputs: [
-      {
-        name: "estateId",
-        type: "uint256",
-      },
-    ],
-    name: "getEstateSize",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     anonymous: false,
     inputs: [
       {
         indexed: true,
-        name: "previousOwner",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "newOwner",
+        name: "registry",
         type: "address",
       },
     ],
-    name: "OwnershipTransferred",
+    name: "EstateRegistrySet",
     type: "event",
   },
   {
@@ -1128,149 +528,22 @@ const _abi = [
     inputs: [
       {
         indexed: true,
-        name: "_from",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "_to",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "_tokenId",
+        name: "assetId",
         type: "uint256",
       },
-    ],
-    name: "Transfer",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
       {
         indexed: true,
-        name: "_owner",
+        name: "holder",
         type: "address",
       },
       {
         indexed: true,
-        name: "_approved",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "_tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "Approval",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "_owner",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "_operator",
+        name: "operator",
         type: "address",
       },
       {
         indexed: false,
-        name: "_approved",
-        type: "bool",
-      },
-    ],
-    name: "ApprovalForAll",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "_owner",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "_estateId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        name: "_data",
-        type: "string",
-      },
-    ],
-    name: "CreateEstate",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "_estateId",
-        type: "uint256",
-      },
-      {
-        indexed: true,
-        name: "_landId",
-        type: "uint256",
-      },
-    ],
-    name: "AddLand",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "_estateId",
-        type: "uint256",
-      },
-      {
-        indexed: true,
-        name: "_landId",
-        type: "uint256",
-      },
-      {
-        indexed: true,
-        name: "_destinatary",
-        type: "address",
-      },
-    ],
-    name: "RemoveLand",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "_assetId",
-        type: "uint256",
-      },
-      {
-        indexed: true,
-        name: "_holder",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "_operator",
-        type: "address",
-      },
-      {
-        indexed: false,
-        name: "_data",
+        name: "data",
         type: "string",
       },
     ],
@@ -1282,12 +555,12 @@ const _abi = [
     inputs: [
       {
         indexed: true,
-        name: "_estateId",
+        name: "assetId",
         type: "uint256",
       },
       {
         indexed: true,
-        name: "_operator",
+        name: "operator",
         type: "address",
       },
     ],
@@ -1326,11 +599,16 @@ const _abi = [
     inputs: [
       {
         indexed: true,
-        name: "_registry",
+        name: "_caller",
+        type: "address",
+      },
+      {
+        indexed: true,
+        name: "_deployer",
         type: "address",
       },
     ],
-    name: "SetLANDRegistry",
+    name: "DeployAuthorized",
     type: "event",
   },
   {
@@ -1338,16 +616,151 @@ const _abi = [
     inputs: [
       {
         indexed: true,
-        name: "_previousEstateLandBalance",
+        name: "_caller",
         type: "address",
       },
       {
         indexed: true,
-        name: "_newEstateLandBalance",
+        name: "_deployer",
         type: "address",
       },
     ],
-    name: "SetEstateLandBalanceToken",
+    name: "DeployForbidden",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: "from",
+        type: "address",
+      },
+      {
+        indexed: true,
+        name: "to",
+        type: "address",
+      },
+      {
+        indexed: true,
+        name: "assetId",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        name: "operator",
+        type: "address",
+      },
+      {
+        indexed: false,
+        name: "userData",
+        type: "bytes",
+      },
+      {
+        indexed: false,
+        name: "operatorData",
+        type: "bytes",
+      },
+    ],
+    name: "Transfer",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: "from",
+        type: "address",
+      },
+      {
+        indexed: true,
+        name: "to",
+        type: "address",
+      },
+      {
+        indexed: true,
+        name: "assetId",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        name: "operator",
+        type: "address",
+      },
+      {
+        indexed: false,
+        name: "userData",
+        type: "bytes",
+      },
+    ],
+    name: "Transfer",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: "from",
+        type: "address",
+      },
+      {
+        indexed: true,
+        name: "to",
+        type: "address",
+      },
+      {
+        indexed: true,
+        name: "assetId",
+        type: "uint256",
+      },
+    ],
+    name: "Transfer",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: "holder",
+        type: "address",
+      },
+      {
+        indexed: true,
+        name: "operator",
+        type: "address",
+      },
+      {
+        indexed: false,
+        name: "authorized",
+        type: "bool",
+      },
+    ],
+    name: "ApprovalForAll",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        name: "owner",
+        type: "address",
+      },
+      {
+        indexed: true,
+        name: "operator",
+        type: "address",
+      },
+      {
+        indexed: true,
+        name: "assetId",
+        type: "uint256",
+      },
+    ],
+    name: "Approval",
     type: "event",
   },
   {
@@ -1355,17 +768,614 @@ const _abi = [
     inputs: [
       {
         indexed: false,
-        name: "contractName",
-        type: "string",
+        name: "_prevOwner",
+        type: "address",
       },
       {
         indexed: false,
-        name: "migrationId",
+        name: "_newOwner",
+        type: "address",
+      },
+    ],
+    name: "OwnerUpdate",
+    type: "event",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "",
+        type: "bytes",
+      },
+    ],
+    name: "initialize",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "operator",
+        type: "address",
+      },
+      {
+        name: "assetId",
+        type: "uint256",
+      },
+    ],
+    name: "isUpdateAuthorized",
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "beneficiary",
+        type: "address",
+      },
+    ],
+    name: "authorizeDeploy",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "beneficiary",
+        type: "address",
+      },
+    ],
+    name: "forbidDeploy",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "x",
+        type: "int256",
+      },
+      {
+        name: "y",
+        type: "int256",
+      },
+      {
+        name: "beneficiary",
+        type: "address",
+      },
+    ],
+    name: "assignNewParcel",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "x",
+        type: "int256[]",
+      },
+      {
+        name: "y",
+        type: "int256[]",
+      },
+      {
+        name: "beneficiary",
+        type: "address",
+      },
+    ],
+    name: "assignMultipleParcels",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [],
+    name: "ping",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+      },
+    ],
+    name: "setLatestToNow",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "x",
+        type: "int256",
+      },
+      {
+        name: "y",
+        type: "int256",
+      },
+    ],
+    name: "encodeTokenId",
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "pure",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "value",
+        type: "uint256",
+      },
+    ],
+    name: "decodeTokenId",
+    outputs: [
+      {
+        name: "",
+        type: "int256",
+      },
+      {
+        name: "",
+        type: "int256",
+      },
+    ],
+    payable: false,
+    stateMutability: "pure",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "x",
+        type: "int256",
+      },
+      {
+        name: "y",
+        type: "int256",
+      },
+    ],
+    name: "exists",
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "assetId",
+        type: "uint256",
+      },
+    ],
+    name: "exists",
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "x",
+        type: "int256",
+      },
+      {
+        name: "y",
+        type: "int256",
+      },
+    ],
+    name: "ownerOfLand",
+    outputs: [
+      {
+        name: "",
+        type: "address",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "x",
+        type: "int256[]",
+      },
+      {
+        name: "y",
+        type: "int256[]",
+      },
+    ],
+    name: "ownerOfLandMany",
+    outputs: [
+      {
+        name: "",
+        type: "address[]",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "owner",
+        type: "address",
+      },
+    ],
+    name: "landOf",
+    outputs: [
+      {
+        name: "",
+        type: "int256[]",
+      },
+      {
+        name: "",
+        type: "int256[]",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "assetId",
+        type: "uint256",
+      },
+    ],
+    name: "tokenMetadata",
+    outputs: [
+      {
+        name: "",
         type: "string",
       },
     ],
-    name: "Migrated",
-    type: "event",
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: "x",
+        type: "int256",
+      },
+      {
+        name: "y",
+        type: "int256",
+      },
+    ],
+    name: "landData",
+    outputs: [
+      {
+        name: "",
+        type: "string",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "from",
+        type: "address",
+      },
+      {
+        name: "to",
+        type: "address",
+      },
+      {
+        name: "assetId",
+        type: "uint256",
+      },
+    ],
+    name: "transferFrom",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "x",
+        type: "int256",
+      },
+      {
+        name: "y",
+        type: "int256",
+      },
+      {
+        name: "to",
+        type: "address",
+      },
+    ],
+    name: "transferLand",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "x",
+        type: "int256[]",
+      },
+      {
+        name: "y",
+        type: "int256[]",
+      },
+      {
+        name: "to",
+        type: "address",
+      },
+    ],
+    name: "transferManyLand",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "x",
+        type: "int256",
+      },
+      {
+        name: "y",
+        type: "int256",
+      },
+      {
+        name: "estateId",
+        type: "uint256",
+      },
+    ],
+    name: "transferLandToEstate",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "x",
+        type: "int256[]",
+      },
+      {
+        name: "y",
+        type: "int256[]",
+      },
+      {
+        name: "estateId",
+        type: "uint256",
+      },
+    ],
+    name: "transferManyLandToEstate",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "assetId",
+        type: "uint256",
+      },
+      {
+        name: "operator",
+        type: "address",
+      },
+    ],
+    name: "setUpdateOperator",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "_owner",
+        type: "address",
+      },
+      {
+        name: "_operator",
+        type: "address",
+      },
+      {
+        name: "_approved",
+        type: "bool",
+      },
+    ],
+    name: "setUpdateManager",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "registry",
+        type: "address",
+      },
+    ],
+    name: "setEstateRegistry",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "x",
+        type: "int256[]",
+      },
+      {
+        name: "y",
+        type: "int256[]",
+      },
+      {
+        name: "beneficiary",
+        type: "address",
+      },
+    ],
+    name: "createEstate",
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "x",
+        type: "int256[]",
+      },
+      {
+        name: "y",
+        type: "int256[]",
+      },
+      {
+        name: "beneficiary",
+        type: "address",
+      },
+      {
+        name: "metadata",
+        type: "string",
+      },
+    ],
+    name: "createEstateWithMetadata",
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "x",
+        type: "int256",
+      },
+      {
+        name: "y",
+        type: "int256",
+      },
+      {
+        name: "data",
+        type: "string",
+      },
+    ],
+    name: "updateLandData",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      {
+        name: "x",
+        type: "int256[]",
+      },
+      {
+        name: "y",
+        type: "int256[]",
+      },
+      {
+        name: "data",
+        type: "string",
+      },
+    ],
+    name: "updateManyLandData",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
   },
 ];
 
