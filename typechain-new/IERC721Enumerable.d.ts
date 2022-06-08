@@ -18,40 +18,28 @@ import { Listener, Provider } from "@ethersproject/providers";
 import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
-interface ERC721MetadataInterface extends ethers.utils.Interface {
+interface IERC721EnumerableInterface extends ethers.utils.Interface {
   functions: {
-    "name()": FunctionFragment;
-    "tokenMetadata(uint256)": FunctionFragment;
-    "description()": FunctionFragment;
-    "symbol()": FunctionFragment;
+    "tokenOfOwnerByIndex(address,uint256)": FunctionFragment;
+    "tokensOf(address)": FunctionFragment;
   };
 
-  encodeFunctionData(functionFragment: "name", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "tokenMetadata",
-    values: [BigNumberish]
+    functionFragment: "tokenOfOwnerByIndex",
+    values: [string, BigNumberish]
   ): string;
-  encodeFunctionData(
-    functionFragment: "description",
-    values?: undefined
-  ): string;
-  encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
+  encodeFunctionData(functionFragment: "tokensOf", values: [string]): string;
 
-  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "tokenMetadata",
+    functionFragment: "tokenOfOwnerByIndex",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(
-    functionFragment: "description",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "tokensOf", data: BytesLike): Result;
 
   events: {};
 }
 
-export class ERC721Metadata extends BaseContract {
+export class IERC721Enumerable extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
@@ -92,70 +80,58 @@ export class ERC721Metadata extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
 
-  interface: ERC721MetadataInterface;
+  interface: IERC721EnumerableInterface;
 
   functions: {
-    name(overrides?: CallOverrides): Promise<[string]>;
-
-    tokenMetadata(
-      assetId: BigNumberish,
+    tokenOfOwnerByIndex(
+      owner: string,
+      index: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string]>;
+    ): Promise<[BigNumber] & { tokenId: BigNumber }>;
 
-    description(overrides?: CallOverrides): Promise<[string]>;
-
-    symbol(overrides?: CallOverrides): Promise<[string]>;
+    tokensOf(owner: string, overrides?: CallOverrides): Promise<[BigNumber[]]>;
   };
 
-  name(overrides?: CallOverrides): Promise<string>;
-
-  tokenMetadata(
-    assetId: BigNumberish,
+  tokenOfOwnerByIndex(
+    owner: string,
+    index: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<string>;
+  ): Promise<BigNumber>;
 
-  description(overrides?: CallOverrides): Promise<string>;
-
-  symbol(overrides?: CallOverrides): Promise<string>;
+  tokensOf(owner: string, overrides?: CallOverrides): Promise<BigNumber[]>;
 
   callStatic: {
-    name(overrides?: CallOverrides): Promise<string>;
-
-    tokenMetadata(
-      assetId: BigNumberish,
+    tokenOfOwnerByIndex(
+      owner: string,
+      index: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<string>;
+    ): Promise<BigNumber>;
 
-    description(overrides?: CallOverrides): Promise<string>;
-
-    symbol(overrides?: CallOverrides): Promise<string>;
+    tokensOf(owner: string, overrides?: CallOverrides): Promise<BigNumber[]>;
   };
 
   filters: {};
 
   estimateGas: {
-    name(overrides?: CallOverrides): Promise<BigNumber>;
-
-    tokenMetadata(
-      assetId: BigNumberish,
+    tokenOfOwnerByIndex(
+      owner: string,
+      index: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    description(overrides?: CallOverrides): Promise<BigNumber>;
-
-    symbol(overrides?: CallOverrides): Promise<BigNumber>;
+    tokensOf(owner: string, overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    tokenMetadata(
-      assetId: BigNumberish,
+    tokenOfOwnerByIndex(
+      owner: string,
+      index: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    description(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    tokensOf(
+      owner: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
   };
 }

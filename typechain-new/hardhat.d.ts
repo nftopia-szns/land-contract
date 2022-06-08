@@ -76,6 +76,86 @@ declare module "hardhat/types/runtime" {
       name: "Ownable",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Ownable__factory>;
+    getContractFactory(
+      name: "ERC165",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC165__factory>;
+    getContractFactory(
+      name: "ERC721Base",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC721Base__factory>;
+    getContractFactory(
+      name: "ERC721Enumerable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC721Enumerable__factory>;
+    getContractFactory(
+      name: "ERC721Metadata",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC721Metadata__factory>;
+    getContractFactory(
+      name: "FullAssetRegistry",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.FullAssetRegistry__factory>;
+    getContractFactory(
+      name: "IApplication",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IApplication__factory>;
+    getContractFactory(
+      name: "IERC721Base",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC721Base__factory>;
+    getContractFactory(
+      name: "IERC721Enumerable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC721Enumerable__factory>;
+    getContractFactory(
+      name: "IERC721Metadata",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC721Metadata__factory>;
+    getContractFactory(
+      name: "IERC721Receiver",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC721Receiver__factory>;
+    getContractFactory(
+      name: "IEstateRegistry",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IEstateRegistry__factory>;
+    getContractFactory(
+      name: "ILANDRegistry",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ILANDRegistry__factory>;
+    getContractFactory(
+      name: "IMetadataHolder",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IMetadataHolder__factory>;
+    getContractFactory(
+      name: "IMiniMeToken",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IMiniMeToken__factory>;
+    getContractFactory(
+      name: "LANDRegistry",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.LANDRegistry__factory>;
+    getContractFactory(
+      name: "LANDStorage",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.LANDStorage__factory>;
+    getContractFactory(
+      name: "Ownable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Ownable__factory>;
+    getContractFactory(
+      name: "OwnableStorage",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.OwnableStorage__factory>;
+    getContractFactory(
+      name: "ProxyStorage",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ProxyStorage__factory>;
+    getContractFactory(
+      name: "Storage",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Storage__factory>;
 
     getContractAt(
       name: "ERC165",
@@ -157,6 +237,106 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.Ownable>;
+    getContractAt(
+      name: "ERC165",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC165>;
+    getContractAt(
+      name: "ERC721Base",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC721Base>;
+    getContractAt(
+      name: "ERC721Enumerable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC721Enumerable>;
+    getContractAt(
+      name: "ERC721Metadata",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC721Metadata>;
+    getContractAt(
+      name: "FullAssetRegistry",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.FullAssetRegistry>;
+    getContractAt(
+      name: "IApplication",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IApplication>;
+    getContractAt(
+      name: "IERC721Base",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC721Base>;
+    getContractAt(
+      name: "IERC721Enumerable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC721Enumerable>;
+    getContractAt(
+      name: "IERC721Metadata",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC721Metadata>;
+    getContractAt(
+      name: "IERC721Receiver",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC721Receiver>;
+    getContractAt(
+      name: "IEstateRegistry",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IEstateRegistry>;
+    getContractAt(
+      name: "ILANDRegistry",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ILANDRegistry>;
+    getContractAt(
+      name: "IMetadataHolder",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IMetadataHolder>;
+    getContractAt(
+      name: "IMiniMeToken",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IMiniMeToken>;
+    getContractAt(
+      name: "LANDRegistry",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.LANDRegistry>;
+    getContractAt(
+      name: "LANDStorage",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.LANDStorage>;
+    getContractAt(
+      name: "Ownable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Ownable>;
+    getContractAt(
+      name: "OwnableStorage",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.OwnableStorage>;
+    getContractAt(
+      name: "ProxyStorage",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ProxyStorage>;
+    getContractAt(
+      name: "Storage",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Storage>;
 
     // default types
     getContractFactory(

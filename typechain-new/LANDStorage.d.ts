@@ -11,7 +11,6 @@ import {
   PopulatedTransaction,
   BaseContract,
   ContractTransaction,
-  Overrides,
   CallOverrides,
 } from "ethers";
 import { BytesLike } from "@ethersproject/bytes";
@@ -19,25 +18,17 @@ import { Listener, Provider } from "@ethersproject/providers";
 import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
-interface OwnableInterface extends ethers.utils.Interface {
+interface LANDStorageInterface extends ethers.utils.Interface {
   functions: {
-    "proxyOwner()": FunctionFragment;
     "updateManager(address,address)": FunctionFragment;
     "latestPing(address)": FunctionFragment;
     "authorizedDeploy(address)": FunctionFragment;
     "registeredBalance(address)": FunctionFragment;
-    "currentContract()": FunctionFragment;
     "landBalance()": FunctionFragment;
-    "owner()": FunctionFragment;
     "updateOperator(uint256)": FunctionFragment;
     "estateRegistry()": FunctionFragment;
-    "transferOwnership(address)": FunctionFragment;
   };
 
-  encodeFunctionData(
-    functionFragment: "proxyOwner",
-    values?: undefined
-  ): string;
   encodeFunctionData(
     functionFragment: "updateManager",
     values: [string, string]
@@ -52,14 +43,9 @@ interface OwnableInterface extends ethers.utils.Interface {
     values: [string]
   ): string;
   encodeFunctionData(
-    functionFragment: "currentContract",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
     functionFragment: "landBalance",
     values?: undefined
   ): string;
-  encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "updateOperator",
     values: [BigNumberish]
@@ -68,12 +54,7 @@ interface OwnableInterface extends ethers.utils.Interface {
     functionFragment: "estateRegistry",
     values?: undefined
   ): string;
-  encodeFunctionData(
-    functionFragment: "transferOwnership",
-    values: [string]
-  ): string;
 
-  decodeFunctionResult(functionFragment: "proxyOwner", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "updateManager",
     data: BytesLike
@@ -88,14 +69,9 @@ interface OwnableInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "currentContract",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "landBalance",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "updateOperator",
     data: BytesLike
@@ -104,23 +80,11 @@ interface OwnableInterface extends ethers.utils.Interface {
     functionFragment: "estateRegistry",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(
-    functionFragment: "transferOwnership",
-    data: BytesLike
-  ): Result;
 
-  events: {
-    "OwnerUpdate(address,address)": EventFragment;
-  };
-
-  getEvent(nameOrSignatureOrTopic: "OwnerUpdate"): EventFragment;
+  events: {};
 }
 
-export type OwnerUpdateEvent = TypedEvent<
-  [string, string] & { _prevOwner: string; _newOwner: string }
->;
-
-export class Ownable extends BaseContract {
+export class LANDStorage extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
@@ -161,11 +125,9 @@ export class Ownable extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
 
-  interface: OwnableInterface;
+  interface: LANDStorageInterface;
 
   functions: {
-    proxyOwner(overrides?: CallOverrides): Promise<[string]>;
-
     updateManager(
       arg0: string,
       arg1: string,
@@ -184,11 +146,7 @@ export class Ownable extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
-    currentContract(overrides?: CallOverrides): Promise<[string]>;
-
     landBalance(overrides?: CallOverrides): Promise<[string]>;
-
-    owner(overrides?: CallOverrides): Promise<[string]>;
 
     updateOperator(
       arg0: BigNumberish,
@@ -196,14 +154,7 @@ export class Ownable extends BaseContract {
     ): Promise<[string]>;
 
     estateRegistry(overrides?: CallOverrides): Promise<[string]>;
-
-    transferOwnership(
-      _newOwner: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
   };
-
-  proxyOwner(overrides?: CallOverrides): Promise<string>;
 
   updateManager(
     arg0: string,
@@ -217,11 +168,7 @@ export class Ownable extends BaseContract {
 
   registeredBalance(arg0: string, overrides?: CallOverrides): Promise<boolean>;
 
-  currentContract(overrides?: CallOverrides): Promise<string>;
-
   landBalance(overrides?: CallOverrides): Promise<string>;
-
-  owner(overrides?: CallOverrides): Promise<string>;
 
   updateOperator(
     arg0: BigNumberish,
@@ -230,14 +177,7 @@ export class Ownable extends BaseContract {
 
   estateRegistry(overrides?: CallOverrides): Promise<string>;
 
-  transferOwnership(
-    _newOwner: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
   callStatic: {
-    proxyOwner(overrides?: CallOverrides): Promise<string>;
-
     updateManager(
       arg0: string,
       arg1: string,
@@ -253,11 +193,7 @@ export class Ownable extends BaseContract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
-    currentContract(overrides?: CallOverrides): Promise<string>;
-
     landBalance(overrides?: CallOverrides): Promise<string>;
-
-    owner(overrides?: CallOverrides): Promise<string>;
 
     updateOperator(
       arg0: BigNumberish,
@@ -265,34 +201,11 @@ export class Ownable extends BaseContract {
     ): Promise<string>;
 
     estateRegistry(overrides?: CallOverrides): Promise<string>;
-
-    transferOwnership(
-      _newOwner: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
   };
 
-  filters: {
-    "OwnerUpdate(address,address)"(
-      _prevOwner?: null,
-      _newOwner?: null
-    ): TypedEventFilter<
-      [string, string],
-      { _prevOwner: string; _newOwner: string }
-    >;
-
-    OwnerUpdate(
-      _prevOwner?: null,
-      _newOwner?: null
-    ): TypedEventFilter<
-      [string, string],
-      { _prevOwner: string; _newOwner: string }
-    >;
-  };
+  filters: {};
 
   estimateGas: {
-    proxyOwner(overrides?: CallOverrides): Promise<BigNumber>;
-
     updateManager(
       arg0: string,
       arg1: string,
@@ -311,11 +224,7 @@ export class Ownable extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    currentContract(overrides?: CallOverrides): Promise<BigNumber>;
-
     landBalance(overrides?: CallOverrides): Promise<BigNumber>;
-
-    owner(overrides?: CallOverrides): Promise<BigNumber>;
 
     updateOperator(
       arg0: BigNumberish,
@@ -323,16 +232,9 @@ export class Ownable extends BaseContract {
     ): Promise<BigNumber>;
 
     estateRegistry(overrides?: CallOverrides): Promise<BigNumber>;
-
-    transferOwnership(
-      _newOwner: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    proxyOwner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
     updateManager(
       arg0: string,
       arg1: string,
@@ -354,11 +256,7 @@ export class Ownable extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    currentContract(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
     landBalance(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     updateOperator(
       arg0: BigNumberish,
@@ -366,10 +264,5 @@ export class Ownable extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     estateRegistry(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    transferOwnership(
-      _newOwner: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
   };
 }

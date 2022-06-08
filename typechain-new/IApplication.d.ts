@@ -11,6 +11,7 @@ import {
   PopulatedTransaction,
   BaseContract,
   ContractTransaction,
+  Overrides,
   CallOverrides,
 } from "ethers";
 import { BytesLike } from "@ethersproject/bytes";
@@ -18,40 +19,22 @@ import { Listener, Provider } from "@ethersproject/providers";
 import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
-interface ERC721MetadataInterface extends ethers.utils.Interface {
+interface IApplicationInterface extends ethers.utils.Interface {
   functions: {
-    "name()": FunctionFragment;
-    "tokenMetadata(uint256)": FunctionFragment;
-    "description()": FunctionFragment;
-    "symbol()": FunctionFragment;
+    "initialize(bytes)": FunctionFragment;
   };
 
-  encodeFunctionData(functionFragment: "name", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "tokenMetadata",
-    values: [BigNumberish]
+    functionFragment: "initialize",
+    values: [BytesLike]
   ): string;
-  encodeFunctionData(
-    functionFragment: "description",
-    values?: undefined
-  ): string;
-  encodeFunctionData(functionFragment: "symbol", values?: undefined): string;
 
-  decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "tokenMetadata",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "description",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
 
   events: {};
 }
 
-export class ERC721Metadata extends BaseContract {
+export class IApplication extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
@@ -92,70 +75,37 @@ export class ERC721Metadata extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
 
-  interface: ERC721MetadataInterface;
+  interface: IApplicationInterface;
 
   functions: {
-    name(overrides?: CallOverrides): Promise<[string]>;
-
-    tokenMetadata(
-      assetId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[string]>;
-
-    description(overrides?: CallOverrides): Promise<[string]>;
-
-    symbol(overrides?: CallOverrides): Promise<[string]>;
+    initialize(
+      data: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
   };
 
-  name(overrides?: CallOverrides): Promise<string>;
-
-  tokenMetadata(
-    assetId: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<string>;
-
-  description(overrides?: CallOverrides): Promise<string>;
-
-  symbol(overrides?: CallOverrides): Promise<string>;
+  initialize(
+    data: BytesLike,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
 
   callStatic: {
-    name(overrides?: CallOverrides): Promise<string>;
-
-    tokenMetadata(
-      assetId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<string>;
-
-    description(overrides?: CallOverrides): Promise<string>;
-
-    symbol(overrides?: CallOverrides): Promise<string>;
+    initialize(data: BytesLike, overrides?: CallOverrides): Promise<void>;
   };
 
   filters: {};
 
   estimateGas: {
-    name(overrides?: CallOverrides): Promise<BigNumber>;
-
-    tokenMetadata(
-      assetId: BigNumberish,
-      overrides?: CallOverrides
+    initialize(
+      data: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
-
-    description(overrides?: CallOverrides): Promise<BigNumber>;
-
-    symbol(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    tokenMetadata(
-      assetId: BigNumberish,
-      overrides?: CallOverrides
+    initialize(
+      data: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
-
-    description(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    symbol(overrides?: CallOverrides): Promise<PopulatedTransaction>;
   };
 }

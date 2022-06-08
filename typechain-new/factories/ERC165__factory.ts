@@ -11,7 +11,7 @@ const _abi = [
     constant: true,
     inputs: [
       {
-        name: "_interfaceId",
+        name: "interfaceID",
         type: "bytes4",
       },
     ],

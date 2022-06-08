@@ -2,8 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Contract, Signer, utils } from "ethers";
-import { Provider } from "@ethersproject/providers";
+import { Signer, utils, Contract, ContractFactory, Overrides } from "ethers";
+import { Provider, TransactionRequest } from "@ethersproject/providers";
 import type {
   ERC721Enumerable,
   ERC721EnumerableInterface,
@@ -14,152 +14,19 @@ const _abi = [
     constant: true,
     inputs: [
       {
-        name: "_interfaceId",
-        type: "bytes4",
-      },
-    ],
-    name: "supportsInterface",
-    outputs: [
-      {
-        name: "",
-        type: "bool",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "_tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "getApproved",
-    outputs: [
-      {
-        name: "_operator",
-        type: "address",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_to",
+        name: "owner",
         type: "address",
       },
       {
-        name: "_tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "approve",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "totalSupply",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_from",
-        type: "address",
-      },
-      {
-        name: "_to",
-        type: "address",
-      },
-      {
-        name: "_tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "transferFrom",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "_owner",
-        type: "address",
-      },
-      {
-        name: "_index",
+        name: "index",
         type: "uint256",
       },
     ],
     name: "tokenOfOwnerByIndex",
     outputs: [
       {
-        name: "_tokenId",
+        name: "assetId",
         type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_from",
-        type: "address",
-      },
-      {
-        name: "_to",
-        type: "address",
-      },
-      {
-        name: "_tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "safeTransferFrom",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "_tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "exists",
-    outputs: [
-      {
-        name: "_exists",
-        type: "bool",
       },
     ],
     payable: false,
@@ -170,195 +37,54 @@ const _abi = [
     constant: true,
     inputs: [
       {
-        name: "_index",
-        type: "uint256",
+        name: "owner",
+        type: "address",
       },
     ],
-    name: "tokenByIndex",
+    name: "tokensOf",
     outputs: [
       {
         name: "",
-        type: "uint256",
+        type: "uint256[]",
       },
     ],
     payable: false,
     stateMutability: "view",
     type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "_tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "ownerOf",
-    outputs: [
-      {
-        name: "_owner",
-        type: "address",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "_owner",
-        type: "address",
-      },
-    ],
-    name: "balanceOf",
-    outputs: [
-      {
-        name: "_balance",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_operator",
-        type: "address",
-      },
-      {
-        name: "_approved",
-        type: "bool",
-      },
-    ],
-    name: "setApprovalForAll",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_from",
-        type: "address",
-      },
-      {
-        name: "_to",
-        type: "address",
-      },
-      {
-        name: "_tokenId",
-        type: "uint256",
-      },
-      {
-        name: "_data",
-        type: "bytes",
-      },
-    ],
-    name: "safeTransferFrom",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "_owner",
-        type: "address",
-      },
-      {
-        name: "_operator",
-        type: "address",
-      },
-    ],
-    name: "isApprovedForAll",
-    outputs: [
-      {
-        name: "",
-        type: "bool",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "_from",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "_to",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "_tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "Transfer",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "_owner",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "_approved",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "_tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "Approval",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "_owner",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "_operator",
-        type: "address",
-      },
-      {
-        indexed: false,
-        name: "_approved",
-        type: "bool",
-      },
-    ],
-    name: "ApprovalForAll",
-    type: "event",
   },
 ];
 
-export class ERC721Enumerable__factory {
+const _bytecode =
+  "0x608060405234801561001057600080fd5b506102dc806100206000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680632f745c59146100515780635a3f2672146100b2575b600080fd5b34801561005d57600080fd5b5061009c600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919050505061014a565b6040518082815260200191505060405180910390f35b3480156100be57600080fd5b506100f3600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610219565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b8381101561013657808201518184015260208101905061011b565b505050509050019250505060405180910390f35b6000600460008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020805490508210151561019c57600080fd5b6f80000000000000000000000000000000821015156101ba57600080fd5b600460008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208281548110151561020657fe5b9060005260206000200154905092915050565b6060600460008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208054806020026020016040519081016040528092919081815260200182805480156102a457602002820191906000526020600020905b815481526020019060010190808311610290575b505050505090509190505600a165627a7a72305820dfabaaf40f7b847af56387b5f0353d3179e8fe65ef2085b6489e0bc3cfae554e0029";
+
+export class ERC721Enumerable__factory extends ContractFactory {
+  constructor(
+    ...args: [signer: Signer] | ConstructorParameters<typeof ContractFactory>
+  ) {
+    if (args.length === 1) {
+      super(_abi, _bytecode, args[0]);
+    } else {
+      super(...args);
+    }
+  }
+
+  deploy(
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ERC721Enumerable> {
+    return super.deploy(overrides || {}) as Promise<ERC721Enumerable>;
+  }
+  getDeployTransaction(
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): TransactionRequest {
+    return super.getDeployTransaction(overrides || {});
+  }
+  attach(address: string): ERC721Enumerable {
+    return super.attach(address) as ERC721Enumerable;
+  }
+  connect(signer: Signer): ERC721Enumerable__factory {
+    return super.connect(signer) as ERC721Enumerable__factory;
+  }
+  static readonly bytecode = _bytecode;
   static readonly abi = _abi;
   static createInterface(): ERC721EnumerableInterface {
     return new utils.Interface(_abi) as ERC721EnumerableInterface;

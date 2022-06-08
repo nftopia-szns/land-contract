@@ -81,19 +81,19 @@ export class ERC165 extends BaseContract {
 
   functions: {
     supportsInterface(
-      _interfaceId: BytesLike,
+      interfaceID: BytesLike,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
   };
 
   supportsInterface(
-    _interfaceId: BytesLike,
+    interfaceID: BytesLike,
     overrides?: CallOverrides
   ): Promise<boolean>;
 
   callStatic: {
     supportsInterface(
-      _interfaceId: BytesLike,
+      interfaceID: BytesLike,
       overrides?: CallOverrides
     ): Promise<boolean>;
   };
@@ -102,14 +102,14 @@ export class ERC165 extends BaseContract {
 
   estimateGas: {
     supportsInterface(
-      _interfaceId: BytesLike,
+      interfaceID: BytesLike,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
     supportsInterface(
-      _interfaceId: BytesLike,
+      interfaceID: BytesLike,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };

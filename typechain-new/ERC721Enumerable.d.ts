@@ -11,7 +11,6 @@ import {
   PopulatedTransaction,
   BaseContract,
   ContractTransaction,
-  Overrides,
   CallOverrides,
 } from "ethers";
 import { BytesLike } from "@ethersproject/bytes";
@@ -21,146 +20,24 @@ import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
 interface ERC721EnumerableInterface extends ethers.utils.Interface {
   functions: {
-    "supportsInterface(bytes4)": FunctionFragment;
-    "getApproved(uint256)": FunctionFragment;
-    "approve(address,uint256)": FunctionFragment;
-    "totalSupply()": FunctionFragment;
-    "transferFrom(address,address,uint256)": FunctionFragment;
     "tokenOfOwnerByIndex(address,uint256)": FunctionFragment;
-    "safeTransferFrom(address,address,uint256)": FunctionFragment;
-    "exists(uint256)": FunctionFragment;
-    "tokenByIndex(uint256)": FunctionFragment;
-    "ownerOf(uint256)": FunctionFragment;
-    "balanceOf(address)": FunctionFragment;
-    "setApprovalForAll(address,bool)": FunctionFragment;
-    "isApprovedForAll(address,address)": FunctionFragment;
+    "tokensOf(address)": FunctionFragment;
   };
 
-  encodeFunctionData(
-    functionFragment: "supportsInterface",
-    values: [BytesLike]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "getApproved",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "approve",
-    values: [string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "totalSupply",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "transferFrom",
-    values: [string, string, BigNumberish]
-  ): string;
   encodeFunctionData(
     functionFragment: "tokenOfOwnerByIndex",
     values: [string, BigNumberish]
   ): string;
-  encodeFunctionData(
-    functionFragment: "safeTransferFrom",
-    values: [string, string, BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "exists",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "tokenByIndex",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "ownerOf",
-    values: [BigNumberish]
-  ): string;
-  encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
-  encodeFunctionData(
-    functionFragment: "setApprovalForAll",
-    values: [string, boolean]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "isApprovedForAll",
-    values: [string, string]
-  ): string;
+  encodeFunctionData(functionFragment: "tokensOf", values: [string]): string;
 
-  decodeFunctionResult(
-    functionFragment: "supportsInterface",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "getApproved",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "totalSupply",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "transferFrom",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(
     functionFragment: "tokenOfOwnerByIndex",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(
-    functionFragment: "safeTransferFrom",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "exists", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "tokenByIndex",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "ownerOf", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "setApprovalForAll",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "isApprovedForAll",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "tokensOf", data: BytesLike): Result;
 
-  events: {
-    "Transfer(address,address,uint256)": EventFragment;
-    "Approval(address,address,uint256)": EventFragment;
-    "ApprovalForAll(address,address,bool)": EventFragment;
-  };
-
-  getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Approval"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "ApprovalForAll"): EventFragment;
+  events: {};
 }
-
-export type TransferEvent = TypedEvent<
-  [string, string, BigNumber] & {
-    _from: string;
-    _to: string;
-    _tokenId: BigNumber;
-  }
->;
-
-export type ApprovalEvent = TypedEvent<
-  [string, string, BigNumber] & {
-    _owner: string;
-    _approved: string;
-    _tokenId: BigNumber;
-  }
->;
-
-export type ApprovalForAllEvent = TypedEvent<
-  [string, string, boolean] & {
-    _owner: string;
-    _operator: string;
-    _approved: boolean;
-  }
->;
 
 export class ERC721Enumerable extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
@@ -206,434 +83,54 @@ export class ERC721Enumerable extends BaseContract {
   interface: ERC721EnumerableInterface;
 
   functions: {
-    supportsInterface(
-      _interfaceId: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
-
-    getApproved(
-      _tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[string] & { _operator: string }>;
-
-    approve(
-      _to: string,
-      _tokenId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    totalSupply(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    transferFrom(
-      _from: string,
-      _to: string,
-      _tokenId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
     tokenOfOwnerByIndex(
-      _owner: string,
-      _index: BigNumberish,
+      owner: string,
+      index: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber] & { _tokenId: BigNumber }>;
+    ): Promise<[BigNumber] & { assetId: BigNumber }>;
 
-    "safeTransferFrom(address,address,uint256)"(
-      _from: string,
-      _to: string,
-      _tokenId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    "safeTransferFrom(address,address,uint256,bytes)"(
-      _from: string,
-      _to: string,
-      _tokenId: BigNumberish,
-      _data: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    exists(
-      _tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[boolean] & { _exists: boolean }>;
-
-    tokenByIndex(
-      _index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
-
-    ownerOf(
-      _tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<[string] & { _owner: string }>;
-
-    balanceOf(
-      _owner: string,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber] & { _balance: BigNumber }>;
-
-    setApprovalForAll(
-      _operator: string,
-      _approved: boolean,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    isApprovedForAll(
-      _owner: string,
-      _operator: string,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
+    tokensOf(owner: string, overrides?: CallOverrides): Promise<[BigNumber[]]>;
   };
-
-  supportsInterface(
-    _interfaceId: BytesLike,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
-
-  getApproved(
-    _tokenId: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<string>;
-
-  approve(
-    _to: string,
-    _tokenId: BigNumberish,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
-
-  transferFrom(
-    _from: string,
-    _to: string,
-    _tokenId: BigNumberish,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
 
   tokenOfOwnerByIndex(
-    _owner: string,
-    _index: BigNumberish,
+    owner: string,
+    index: BigNumberish,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
-  "safeTransferFrom(address,address,uint256)"(
-    _from: string,
-    _to: string,
-    _tokenId: BigNumberish,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  "safeTransferFrom(address,address,uint256,bytes)"(
-    _from: string,
-    _to: string,
-    _tokenId: BigNumberish,
-    _data: BytesLike,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  exists(_tokenId: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
-
-  tokenByIndex(
-    _index: BigNumberish,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
-
-  ownerOf(_tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
-
-  balanceOf(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-  setApprovalForAll(
-    _operator: string,
-    _approved: boolean,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  isApprovedForAll(
-    _owner: string,
-    _operator: string,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
+  tokensOf(owner: string, overrides?: CallOverrides): Promise<BigNumber[]>;
 
   callStatic: {
-    supportsInterface(
-      _interfaceId: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
-
-    getApproved(
-      _tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<string>;
-
-    approve(
-      _to: string,
-      _tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
-
-    transferFrom(
-      _from: string,
-      _to: string,
-      _tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     tokenOfOwnerByIndex(
-      _owner: string,
-      _index: BigNumberish,
+      owner: string,
+      index: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "safeTransferFrom(address,address,uint256)"(
-      _from: string,
-      _to: string,
-      _tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    "safeTransferFrom(address,address,uint256,bytes)"(
-      _from: string,
-      _to: string,
-      _tokenId: BigNumberish,
-      _data: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    exists(_tokenId: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
-
-    tokenByIndex(
-      _index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    ownerOf(_tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
-
-    balanceOf(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    setApprovalForAll(
-      _operator: string,
-      _approved: boolean,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    isApprovedForAll(
-      _owner: string,
-      _operator: string,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+    tokensOf(owner: string, overrides?: CallOverrides): Promise<BigNumber[]>;
   };
 
-  filters: {
-    "Transfer(address,address,uint256)"(
-      _from?: string | null,
-      _to?: string | null,
-      _tokenId?: BigNumberish | null
-    ): TypedEventFilter<
-      [string, string, BigNumber],
-      { _from: string; _to: string; _tokenId: BigNumber }
-    >;
-
-    Transfer(
-      _from?: string | null,
-      _to?: string | null,
-      _tokenId?: BigNumberish | null
-    ): TypedEventFilter<
-      [string, string, BigNumber],
-      { _from: string; _to: string; _tokenId: BigNumber }
-    >;
-
-    "Approval(address,address,uint256)"(
-      _owner?: string | null,
-      _approved?: string | null,
-      _tokenId?: BigNumberish | null
-    ): TypedEventFilter<
-      [string, string, BigNumber],
-      { _owner: string; _approved: string; _tokenId: BigNumber }
-    >;
-
-    Approval(
-      _owner?: string | null,
-      _approved?: string | null,
-      _tokenId?: BigNumberish | null
-    ): TypedEventFilter<
-      [string, string, BigNumber],
-      { _owner: string; _approved: string; _tokenId: BigNumber }
-    >;
-
-    "ApprovalForAll(address,address,bool)"(
-      _owner?: string | null,
-      _operator?: string | null,
-      _approved?: null
-    ): TypedEventFilter<
-      [string, string, boolean],
-      { _owner: string; _operator: string; _approved: boolean }
-    >;
-
-    ApprovalForAll(
-      _owner?: string | null,
-      _operator?: string | null,
-      _approved?: null
-    ): TypedEventFilter<
-      [string, string, boolean],
-      { _owner: string; _operator: string; _approved: boolean }
-    >;
-  };
+  filters: {};
 
   estimateGas: {
-    supportsInterface(
-      _interfaceId: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    getApproved(
-      _tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    approve(
-      _to: string,
-      _tokenId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
-    totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
-
-    transferFrom(
-      _from: string,
-      _to: string,
-      _tokenId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
     tokenOfOwnerByIndex(
-      _owner: string,
-      _index: BigNumberish,
+      owner: string,
+      index: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    "safeTransferFrom(address,address,uint256)"(
-      _from: string,
-      _to: string,
-      _tokenId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
-    "safeTransferFrom(address,address,uint256,bytes)"(
-      _from: string,
-      _to: string,
-      _tokenId: BigNumberish,
-      _data: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
-    exists(
-      _tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    tokenByIndex(
-      _index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    ownerOf(
-      _tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    balanceOf(_owner: string, overrides?: CallOverrides): Promise<BigNumber>;
-
-    setApprovalForAll(
-      _operator: string,
-      _approved: boolean,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
-    isApprovedForAll(
-      _owner: string,
-      _operator: string,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    tokensOf(owner: string, overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    supportsInterface(
-      _interfaceId: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    getApproved(
-      _tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    approve(
-      _to: string,
-      _tokenId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    totalSupply(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    transferFrom(
-      _from: string,
-      _to: string,
-      _tokenId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
     tokenOfOwnerByIndex(
-      _owner: string,
-      _index: BigNumberish,
+      owner: string,
+      index: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    "safeTransferFrom(address,address,uint256)"(
-      _from: string,
-      _to: string,
-      _tokenId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    "safeTransferFrom(address,address,uint256,bytes)"(
-      _from: string,
-      _to: string,
-      _tokenId: BigNumberish,
-      _data: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    exists(
-      _tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    tokenByIndex(
-      _index: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    ownerOf(
-      _tokenId: BigNumberish,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    balanceOf(
-      _owner: string,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    setApprovalForAll(
-      _operator: string,
-      _approved: boolean,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    isApprovedForAll(
-      _owner: string,
-      _operator: string,
+    tokensOf(
+      owner: string,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };

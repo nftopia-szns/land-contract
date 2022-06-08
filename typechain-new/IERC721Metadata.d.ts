@@ -18,7 +18,7 @@ import { Listener, Provider } from "@ethersproject/providers";
 import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
-interface ERC721MetadataInterface extends ethers.utils.Interface {
+interface IERC721MetadataInterface extends ethers.utils.Interface {
   functions: {
     "name()": FunctionFragment;
     "tokenMetadata(uint256)": FunctionFragment;
@@ -51,7 +51,7 @@ interface ERC721MetadataInterface extends ethers.utils.Interface {
   events: {};
 }
 
-export class ERC721Metadata extends BaseContract {
+export class IERC721Metadata extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
@@ -92,7 +92,7 @@ export class ERC721Metadata extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
 
-  interface: ERC721MetadataInterface;
+  interface: IERC721MetadataInterface;
 
   functions: {
     name(overrides?: CallOverrides): Promise<[string]>;

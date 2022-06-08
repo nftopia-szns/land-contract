@@ -11,7 +11,6 @@ import {
   PopulatedTransaction,
   BaseContract,
   ContractTransaction,
-  Overrides,
   CallOverrides,
 } from "ethers";
 import { BytesLike } from "@ethersproject/bytes";
@@ -19,7 +18,7 @@ import { Listener, Provider } from "@ethersproject/providers";
 import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
-interface OwnableInterface extends ethers.utils.Interface {
+interface StorageInterface extends ethers.utils.Interface {
   functions: {
     "proxyOwner()": FunctionFragment;
     "updateManager(address,address)": FunctionFragment;
@@ -31,7 +30,6 @@ interface OwnableInterface extends ethers.utils.Interface {
     "owner()": FunctionFragment;
     "updateOperator(uint256)": FunctionFragment;
     "estateRegistry()": FunctionFragment;
-    "transferOwnership(address)": FunctionFragment;
   };
 
   encodeFunctionData(
@@ -68,10 +66,6 @@ interface OwnableInterface extends ethers.utils.Interface {
     functionFragment: "estateRegistry",
     values?: undefined
   ): string;
-  encodeFunctionData(
-    functionFragment: "transferOwnership",
-    values: [string]
-  ): string;
 
   decodeFunctionResult(functionFragment: "proxyOwner", data: BytesLike): Result;
   decodeFunctionResult(
@@ -104,23 +98,11 @@ interface OwnableInterface extends ethers.utils.Interface {
     functionFragment: "estateRegistry",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(
-    functionFragment: "transferOwnership",
-    data: BytesLike
-  ): Result;
 
-  events: {
-    "OwnerUpdate(address,address)": EventFragment;
-  };
-
-  getEvent(nameOrSignatureOrTopic: "OwnerUpdate"): EventFragment;
+  events: {};
 }
 
-export type OwnerUpdateEvent = TypedEvent<
-  [string, string] & { _prevOwner: string; _newOwner: string }
->;
-
-export class Ownable extends BaseContract {
+export class Storage extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
@@ -161,7 +143,7 @@ export class Ownable extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
 
-  interface: OwnableInterface;
+  interface: StorageInterface;
 
   functions: {
     proxyOwner(overrides?: CallOverrides): Promise<[string]>;
@@ -196,11 +178,6 @@ export class Ownable extends BaseContract {
     ): Promise<[string]>;
 
     estateRegistry(overrides?: CallOverrides): Promise<[string]>;
-
-    transferOwnership(
-      _newOwner: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
   };
 
   proxyOwner(overrides?: CallOverrides): Promise<string>;
@@ -229,11 +206,6 @@ export class Ownable extends BaseContract {
   ): Promise<string>;
 
   estateRegistry(overrides?: CallOverrides): Promise<string>;
-
-  transferOwnership(
-    _newOwner: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
 
   callStatic: {
     proxyOwner(overrides?: CallOverrides): Promise<string>;
@@ -265,30 +237,9 @@ export class Ownable extends BaseContract {
     ): Promise<string>;
 
     estateRegistry(overrides?: CallOverrides): Promise<string>;
-
-    transferOwnership(
-      _newOwner: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
   };
 
-  filters: {
-    "OwnerUpdate(address,address)"(
-      _prevOwner?: null,
-      _newOwner?: null
-    ): TypedEventFilter<
-      [string, string],
-      { _prevOwner: string; _newOwner: string }
-    >;
-
-    OwnerUpdate(
-      _prevOwner?: null,
-      _newOwner?: null
-    ): TypedEventFilter<
-      [string, string],
-      { _prevOwner: string; _newOwner: string }
-    >;
-  };
+  filters: {};
 
   estimateGas: {
     proxyOwner(overrides?: CallOverrides): Promise<BigNumber>;
@@ -323,11 +274,6 @@ export class Ownable extends BaseContract {
     ): Promise<BigNumber>;
 
     estateRegistry(overrides?: CallOverrides): Promise<BigNumber>;
-
-    transferOwnership(
-      _newOwner: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
   };
 
   populateTransaction: {
@@ -366,10 +312,5 @@ export class Ownable extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     estateRegistry(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    transferOwnership(
-      _newOwner: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
   };
 }
