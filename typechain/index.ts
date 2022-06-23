@@ -2,12 +2,16 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { Bid } from "./Bid";
+export type { ERC20 } from "./ERC20";
+export type { ERC721 } from "./ERC721";
 export type { ERC721Bid } from "./ERC721Bid";
 export type { EstateRegistry } from "./EstateRegistry";
 export type { LANDRegistry } from "./LANDRegistry";
 export type { Marketplace } from "./Marketplace";
 export * as factories from "./factories";
 export { Bid__factory } from "./factories/Bid__factory";
+export { ERC20__factory } from "./factories/ERC20__factory";
+export { ERC721__factory } from "./factories/ERC721__factory";
 export { ERC721Bid__factory } from "./factories/ERC721Bid__factory";
 export { EstateRegistry__factory } from "./factories/EstateRegistry__factory";
 export { LANDRegistry__factory } from "./factories/LANDRegistry__factory";
