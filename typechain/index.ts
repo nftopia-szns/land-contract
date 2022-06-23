@@ -2,11 +2,13 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { Bid } from "./Bid";
+export type { ERC721Bid } from "./ERC721Bid";
 export type { EstateRegistry } from "./EstateRegistry";
 export type { LANDRegistry } from "./LANDRegistry";
 export type { Marketplace } from "./Marketplace";
 export * as factories from "./factories";
 export { Bid__factory } from "./factories/Bid__factory";
+export { ERC721Bid__factory } from "./factories/ERC721Bid__factory";
 export { EstateRegistry__factory } from "./factories/EstateRegistry__factory";
 export { LANDRegistry__factory } from "./factories/LANDRegistry__factory";
 export { Marketplace__factory } from "./factories/Marketplace__factory";

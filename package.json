@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "gen-type": "typechain --target ethers-v5 --out-dir typechain '**/*.abi'"
+    "gen": "typechain --target ethers-v5 --out-dir typechain '**/*.abi'"
   },
   "author": "",
   "license": "ISC",
